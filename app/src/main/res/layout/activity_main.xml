@@ -8,14 +8,16 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/title_bar_tall" />
+        android:layout_height="77dp"
+        android:src="@drawable/Logo" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/SwapButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="재료" />
+        android:layout_gravity="center"
+        android:background="@color/changeButton"
+        android:text="변경 버튼" />
 
     <fragment
         android:id="@+id/Fragment"
