@@ -20,7 +20,7 @@
         android:text="재료" />
 
     <FrameLayout
-        android:id="@+id/container"
+        android:id="@+id/action_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="8dp">

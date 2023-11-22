@@ -85,8 +85,10 @@ public class MainActivity extends AppCompatActivity {
 
         swapbutton = findViewById(R.id.SwapButton);
 
-        recipefragment = (RecipeFragment) getSupportFragmentManager().findFragmentById(R.id.Fragment);
-        ingredientfragment = (IngredientFragment) getSupportFragmentManager().findFragmentById(R.id.Fragment);
+        recipefragment = new RecipeFragment();
+        ingredientfragment = new IngredientFragment();
+
+        getSupportFragmentManager().beginTransaction().add(R.id.action_container, recipefragment);
 
         swapbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,11 +102,11 @@ public class MainActivity extends AppCompatActivity {
     //프래그먼트, 버튼 text 교체 함수
     public void FragmentChange() {
         if (fragmentIndex) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, ingredientfragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.action_container, ingredientfragment).commit();
             swapbutton.setText("레시피");
 
         } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, recipefragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.action_container, recipefragment).commit();
             swapbutton.setText("재료");
         }
     }
