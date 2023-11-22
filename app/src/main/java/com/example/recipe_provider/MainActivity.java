@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().add(R.id.action_container, recipefragment);
 
+        // 프래그먼트 교체 버튼 리스너
         swapbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
