@@ -16,8 +16,10 @@ public class RecipeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_recipe, container, false);
 
-        ListView nameList = (ListView) rootView.findViewById(R.id.NameList);
-        ListView ProgressList = (ListView) rootView.findViewById(R.id.ProgressList);
+        ListView RecipeList = (ListView) rootView.findViewById(R.id.RecipeList);
+        MainActivity.CustomAdapter adapter = new MainActivity.CustomAdapter();
+
+        RecipeList.setAdapter(adapter);
 
         return rootView;
     }

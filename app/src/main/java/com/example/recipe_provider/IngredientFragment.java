@@ -17,8 +17,11 @@ public class IngredientFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_ingredient, container, false);
 
-        ListView nameList = (ListView) rootView.findViewById(R.id.NameList);
-        ListView numList = (ListView) rootView.findViewById(R.id.AmountList);
+        ListView IngredientList = (ListView) rootView.findViewById(R.id.IngredientList);
+        MainActivity.CustomAdapter adapter = new MainActivity.CustomAdapter();
+
+        IngredientList.setAdapter(adapter);
+
 
         return rootView;
     }
