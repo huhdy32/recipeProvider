@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/Textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/title_bar_tall" />
+        android:text="Reverse Recipe"
+        android:textAlignment="center"
+        android:textSize="40dp"/>
 
     <Button
         android:id="@+id/SwapButton"
@@ -17,10 +19,19 @@
         android:layout_height="wrap_content"
         android:text="재료" />
 
-    <fragment
-        android:id="@+id/Fragment"
-        android:name="com.example.recipe_provider.RecipeFragment"
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="8dp">
+
+        <fragment
+            android:id="@+id/Fragment"
+            android:name="com.example.recipe_provider.RecipeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+
+
 </LinearLayout>

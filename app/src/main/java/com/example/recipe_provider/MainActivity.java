@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     // 각 프레그먼트 정의
     RecipeFragment recipefragment;
     IngredientFragment ingredientfragment;
-    public static boolean FragmentIndex = true;
+    public static boolean fragmentIndex = true;
     Button swapbutton;
 
     // 리스트뷰 커스텀 어뎁터 정의
@@ -25,7 +25,18 @@ public class MainActivity extends AppCompatActivity {
         private ArrayList<String> mName;
         private ArrayList<String> mNum;
         public CustomAdapter() {
+            mName = new ArrayList<>();
+            mNum = new ArrayList<>();
 
+            // 예시 데이터 추가
+            mName.add("사과");
+            mNum.add("5");
+
+            mName.add("바나나");
+            mNum.add("3");
+
+            mName.add("오렌지");
+            mNum.add("8");
         }
         @Override
         public int getCount(){
@@ -57,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
             // 프래그먼트에 따라 수식언 추가
             String mod;
-            if(FragmentIndex){
+            if(fragmentIndex){
                 mod = " %";
             } else mod = " g";
 
@@ -75,12 +86,12 @@ public class MainActivity extends AppCompatActivity {
         swapbutton = findViewById(R.id.SwapButton);
 
         recipefragment = (RecipeFragment) getSupportFragmentManager().findFragmentById(R.id.Fragment);
-        ingredientfragment = new IngredientFragment();
+        ingredientfragment = (IngredientFragment) getSupportFragmentManager().findFragmentById(R.id.Fragment);
 
         swapbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentIndex = !FragmentIndex;
+                fragmentIndex = !fragmentIndex;
                 FragmentChange();
             }
         });
@@ -88,12 +99,12 @@ public class MainActivity extends AppCompatActivity {
 
     //프래그먼트, 버튼 text 교체 함수
     public void FragmentChange() {
-        if (FragmentIndex) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.Fragment, ingredientfragment).commit();
+        if (fragmentIndex) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, ingredientfragment).commit();
             swapbutton.setText("레시피");
 
         } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.Fragment, recipefragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, recipefragment).commit();
             swapbutton.setText("재료");
         }
     }
