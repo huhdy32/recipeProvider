@@ -18,6 +18,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:layout_width="170dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="물 100g"
+            android:background="@drawable/button_blue"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="고추 100g"
+            android:background="@drawable/button_blue"
+            />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="98dp"
@@ -25,7 +47,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="52dp"
         android:gravity="center"
-        android:background="@color/addButton"
+        android:background="@drawable/roundrectangle_border"
         android:text="간장계란밥"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.79"
@@ -36,6 +58,7 @@
         android:id="@+id/textView2"
         android:layout_width="98dp"
         android:layout_height="38dp"
+        android:background="@drawable/roundrectangle_border"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="52dp"
         android:gravity="center"
@@ -53,14 +76,16 @@
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:hint="재료 검색"
+        android:background="@drawable/roundrectangle_border"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-    <ListView
-        android:layout_width="186dp"
-        android:layout_height="151dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
@@ -68,30 +93,31 @@
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="120dp"
+        android:background="@drawable/roundrectangle_border"
         android:gravity="center"
         android:hint="수량 입력"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="82dp"
         android:layout_height="40dp"
-        android:gravity="center"
-        android:text="상세 정보"
-        android:textSize="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_gray"
+        android:text="확인"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:gravity="left"
+        android:gravity="center_horizontal"
         android:hint="상세 정보 입력"
+        android:background="@drawable/roundrectangle_border"
         app:layout_constraintBottom_toTopOf="@+id/appCompatButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -102,7 +128,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="레시피 추가"
-        android:background="@color/changeButton"
+        android:background="@drawable/button_orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
