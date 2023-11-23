@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db;
-    static final String DB_NAME = "DATABASE";
     static final String RECIPE_TABLE_NAME = "RECIPE";
     static final String INGREDIENT_TABLE_NAME = "INGREDIENT";
     static final String RELATION_TABLE_NAME = "RELATION";
@@ -25,17 +24,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         db = sqLiteDatabase;
         init_Tables();
-        initRecipeTableEntity();
-        db.close();
+        initRecipeTable();
+        initIngredientTable();
+        initRelationTable();
     }
-
-
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        return;
-    }
-
-    // 데이터베이스 테이블 초기화
     private void init_Tables() {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + RECIPE_TABLE_NAME + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -48,7 +40,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "recipe_id INTEGER," +
                 "ingredient_id INTEGER," +
                 "requirement INTEGER, " +
-                "FOREIGN KEY(recipie_id) REFERENCES RECIPE_TABLE_NAME(recipie_id));");
+                "FOREIGN KEY(recipe_id) REFERENCES " + RECIPE_TABLE_NAME + "(id)," +
+                "FOREIGN KEY(ingredient_id) REFERENCES " + INGREDIENT_TABLE_NAME +"(id)," +
+                "PRIMARY KEY(recipe_id, ingredient_id));");
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        return;
     }
 
     private void initRecipeTable() {
@@ -95,33 +93,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private void initRelationTable() {
         String[] ingredientNames = {"밥", "간장", "계란"};
-        db = getWritableDatabase();
+        int recipeIdx;
+        int ingredientIdx;
+        db = getReadableDatabase();
         Cursor cursor = db.query(
                 RECIPE_TABLE_NAME,
-                new String[] {"id"},
+                new String[]{"id"},
                 "name = 간장계란밥",
                 null,
                 null,
                 null,
                 null);
-        if (cursor != null) {
-            int id_Index = cursor.getInt(0);
-        }
+        recipeIdx = cursor.getInt(0);
+
         for (String ingredientName : ingredientNames) {
+            db = getReadableDatabase();
             cursor = db.query(
                     INGREDIENT_TABLE_NAME,
-                    new String[] {"id"},
+                    new String[]{"id"},
                     "name = " + ingredientName,
                     null,
                     null,
                     null,
                     null);
-            int idIndex ;
-            if (cursor != null) {
-                idIndex = cursor.getInt(0);
-            }
-        }
+            ingredientIdx = cursor.getInt(0);
 
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("recipe_id", recipeIdx);
+            contentValues.put("ingredient_id", ingredientIdx);
+            contentValues.put("requirement", 500);
+            db = getWritableDatabase();
+            db.insert(RELATION_TABLE_NAME, null, contentValues);
+        }
         cursor.close();
         db.close();
     }

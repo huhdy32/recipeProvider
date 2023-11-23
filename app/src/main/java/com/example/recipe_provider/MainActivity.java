@@ -14,6 +14,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String DATABASE_NAME = "DATABASE";
+    public static DatabaseHelper database ;
     // 각 프레그먼트 정의
     RecipeFragment recipefragment;
     IngredientFragment ingredientfragment;
@@ -82,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // 데이터 베이스 생성 코드
+        database = new DatabaseHelper(this, DATABASE_NAME, null, 1);
 
         swapbutton = findViewById(R.id.SwapButton);
 

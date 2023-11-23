@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.example.recipe_provider"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.recipe_provider"
