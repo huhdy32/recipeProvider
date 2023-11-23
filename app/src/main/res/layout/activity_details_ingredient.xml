@@ -12,20 +12,20 @@
         android:layout_width="202dp"
         android:layout_height="199dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/suisouce"
+        android:src="@drawable/suisause"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/nameText"
         android:layout_width="98dp"
         android:layout_height="38dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/roundrectangle_border"
         android:layout_marginEnd="52dp"
         android:gravity="center"
-        android:background="@drawable/roundrectangle_border"
         android:text="간장"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.79"
@@ -33,28 +33,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/amountText"
+        android:background="@drawable/roundrectangle_border"
         android:layout_width="98dp"
         android:layout_height="38dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="52dp"
         android:gravity="center"
-        android:text="수량 추가"
-        android:background="@drawable/roundrectangle_border"
+        android:text="42g"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.79"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton"
+        android:id="@+id/deleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="재료 추가"
-        android:background="@drawable/button_orange"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/button_Red"
+        android:text="재료 삭제"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

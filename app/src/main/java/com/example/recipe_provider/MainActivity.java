@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             return position;
         }
         @Override
-        public Object getItem(int position){
+        public String getItem(int position){
             return mName.get(position);
         }
         @Override
