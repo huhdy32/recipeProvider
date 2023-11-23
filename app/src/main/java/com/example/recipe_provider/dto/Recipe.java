@@ -1,7 +1,6 @@
-package com.example.recipe_provider.domain;
+package com.example.recipe_provider.dto;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class Recipe {
     private String name;

@@ -1,4 +1,4 @@
-package com.example.recipe_provider.domain;
+package com.example.recipe_provider.dto;
 
 public class Ingredient {
     private String name;
