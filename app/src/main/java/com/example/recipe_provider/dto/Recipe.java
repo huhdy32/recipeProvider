@@ -16,9 +16,6 @@ public class Recipe {
         this.image = image;
         this.ingredientRequirements = ingredientRequirements;
         this.recipeType = recipeType;
-
-
-
     }
 
     public String getName() {
