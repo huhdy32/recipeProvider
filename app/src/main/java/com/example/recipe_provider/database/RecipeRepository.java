@@ -49,7 +49,7 @@ public class RecipeRepository {
         return recipes;
     }
 
-    public Recipe get(final int recipeId) {
+    public Recipe get(final long recipeId) {
         db = databaseHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT r.id, r.name, r.details, r.imagePath, r.recipeType FROM " + DatabaseHelper.RECIPE_TABLE_NAME + "as r WHERE id = " + recipeId, null);
         Recipe recipe;
@@ -71,7 +71,7 @@ public class RecipeRepository {
     }
 
     // 레시피 추가 기능
-    public long insert(Recipe recipe) {
+    public long insert(final Recipe recipe) {
         db = databaseHelper.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -84,9 +84,15 @@ public class RecipeRepository {
         db.close();
         return rowIdx;
     }
+    public int delete(final long recipeId) {
+        db = databaseHelper.getWritableDatabase();
+        int count = db.delete(DatabaseHelper.RECIPE_TABLE_NAME, "id = ?", new String[] {String.valueOf(recipeId)});
+        db.close();
+        return count;
+    }
 
     // 레시피에 필요한 재료들과 각각에 대해 필요한 양을
-    public HashMap<Ingredient, Integer> getRequireIngredient(final int recipeIdx) {
+    public HashMap<Ingredient, Integer> getRequireIngredient(final long recipeIdx) {
         db = databaseHelper.getReadableDatabase();
         String query = "SELECT i.id, i.name, i.remain, i.imagePath, ri.requirement " +
                 "FROM " + DatabaseHelper.INGREDIENT_TABLE_NAME + " as i " +

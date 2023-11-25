@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import androidx.annotation.RequiresPermission;
+
 import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.dto.IngredientEntity;
 
@@ -42,7 +44,7 @@ public class IngredientRepository {
     }
 
     // 목록의 엔터티를 클릭했을 때 재료 출력을 위한 메소드
-    public Ingredient get(int ingredientId) {
+    public Ingredient get(final long ingredientId) {
         db = databaseHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.INGREDIENT_TABLE_NAME + " WHERE id = " + ingredientId, null);
         Ingredient ingredient;
@@ -60,7 +62,8 @@ public class IngredientRepository {
         db.close();
         return ingredient;
     }
-    public long insert(Ingredient ingredient) {
+
+    public long insert(final Ingredient ingredient) {
         db = databaseHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", ingredient.getName());
@@ -69,5 +72,12 @@ public class IngredientRepository {
         long rowIdx = db.insert(DatabaseHelper.INGREDIENT_TABLE_NAME, null, contentValues);
         db.close();
         return rowIdx;
+    }
+
+    public int delete(final long ingredientId) {
+        db = databaseHelper.getWritableDatabase();
+        int count = db.delete(DatabaseHelper.INGREDIENT_TABLE_NAME, "id = ?", new String[] {String.valueOf(ingredientId)});
+        db.close();
+        return count;
     }
 }

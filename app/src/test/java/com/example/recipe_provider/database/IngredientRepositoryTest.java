@@ -38,4 +38,10 @@ public class IngredientRepositoryTest {
                 "heelo/1231")),4 );
     }
 
+    @Test
+    public void TEST_DELETE_INGREDIENTS() {
+        IngredientRepository ingredientRepository = new IngredientRepository(context);
+        assertEquals(ingredientRepository.delete(3), 1);
+    }
+
 }

@@ -45,5 +45,10 @@ public class RecipeRepositoryTest {
         ));
         assertEquals(recipeRepository.getAll().size(), 2);
     }
+    @Test
+    public void TEST_DELETE_RECIPE() {
+        RecipeRepository recipeRepository = new RecipeRepository(context);
+        assertEquals(recipeRepository.delete(1), 1);
+    }
 
 }
