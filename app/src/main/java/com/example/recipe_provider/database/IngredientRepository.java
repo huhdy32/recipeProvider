@@ -19,19 +19,24 @@ public class IngredientRepository {
         this.databaseHelper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, 1);
     }
 
-    public List<Recipe> getAllIngredients() {
+    public List<Ingredient> getAllIngredients() {
         db = databaseHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.INGREDIENT_TABLE_NAME, null);
-        List<Recipe> recipes = new ArrayList<>();
+        List<Ingredient> ingredients = new ArrayList<>();
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
                 do {
-                    recipes.add(new Recipe(cursor.getString(1), null, null, null, null));
+                    ingredients.add(new Ingredient(
+                            cursor.getInt(0);
+                            cursor.getString(1),
+                            cursor.getInt(3),
+                            cursor.getString()
+                    ));
                 } while (cursor.moveToNext());
                 cursor.close();
             }
         }
-        return recipes;
+        return ingredients;
     }
 
     public Ingredient getIngredient(String name) {
@@ -39,7 +44,12 @@ public class IngredientRepository {
         Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.INGREDIENT_TABLE_NAME + " WHERE name = '" + name + "'", null);
         Ingredient ingredient;
         if (cursor.moveToFirst()) {
-            ingredient = new Ingredient(cursor.getString(1), cursor.getInt(2));
+            ingredient = new Ingredient(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(3),
+                    cursor.getString(2)
+            );
         } else {
             ingredient = null;
         }

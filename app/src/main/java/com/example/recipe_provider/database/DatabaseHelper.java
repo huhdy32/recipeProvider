@@ -32,11 +32,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private void init_Tables() {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + RECIPE_TABLE_NAME + "(" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "name TEXT UNIQUE);");
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "name TEXT UNIQUE, " +
+                "details TEXT, " +
+                "imagePath TEXT UNIQUE, " +
+                "recipeType TEXT);");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + INGREDIENT_TABLE_NAME + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "name TEXT UNIQUE," +
+                "imagePath TEXT UNIQUE, " +
                 "remain INTEGER);");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + RELATION_TABLE_NAME + "(" +
                 "recipe_id INTEGER," +

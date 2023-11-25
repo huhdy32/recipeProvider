@@ -1,29 +1,26 @@
 package com.example.recipe_provider.dto;
 
-public class Ingredient {
+public class RecipeEntity {
     private int id;
     private String name;
     private int remain;
-    private String imagePath;
+    private int require;
 
-    public Ingredient(int id, String name, int remain, String imagePath) {
+    public RecipeEntity(int id, String name, int remain, int require) {
         this.id = id;
         this.name = name;
         this.remain = remain;
-        this.imagePath = imagePath;
+        this.require = require;
     }
 
     public int getId() {
         return id;
     }
+
     public String getName() {
         return name;
     }
-    public int getRemain() {
-        return remain;
+    public float getRate() {
+        return (float) remain / (float) require;
     }
-    public String getImagePath() {
-        return imagePath;
-    }
-
 }
