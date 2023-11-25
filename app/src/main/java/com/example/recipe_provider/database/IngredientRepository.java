@@ -62,7 +62,6 @@ public class IngredientRepository {
         db.close();
         return ingredient;
     }
-
     public long insert(final Ingredient ingredient) {
         db = databaseHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

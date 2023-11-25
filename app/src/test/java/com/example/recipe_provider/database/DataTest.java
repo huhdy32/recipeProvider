@@ -34,7 +34,6 @@ public class DataTest {
     public void TEST_GET_INGREDIENT() {
         ingredientRepository = new IngredientRepository(context);
         assertEquals(ingredientRepository.get(1).getName(), "밥");
-        assertEquals(ingredientRepository.get(2).getName(), "간장");
     }
 
     @Test

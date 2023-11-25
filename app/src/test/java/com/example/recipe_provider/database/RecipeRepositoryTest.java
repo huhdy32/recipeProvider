@@ -50,5 +50,4 @@ public class RecipeRepositoryTest {
         RecipeRepository recipeRepository = new RecipeRepository(context);
         assertEquals(recipeRepository.delete(1), 1);
     }
-
 }
