@@ -71,20 +71,18 @@ public class RecipeRepository {
     }
 
     // 레시피 추가 기능
-    public boolean insert(Recipe recipe) {
+    public long insert(Recipe recipe) {
         db = databaseHelper.getWritableDatabase();
-        try {
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("name", recipe.getName());
-            contentValues.put("details", recipe.getDetails());
-            contentValues.put("imagePath", recipe.getImagePath());
-            contentValues.put("recipeType", recipe.getRecipeType());
-            db.insert(DatabaseHelper.RECIPE_TABLE_NAME, null, contentValues);
-            return true;
-        } finally {
-            db.close();
-            return false;
-        }
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", recipe.getName());
+        contentValues.put("details", recipe.getDetails());
+        contentValues.put("imagePath", recipe.getImagePath());
+        contentValues.put("recipeType", recipe.getRecipeType());
+
+        long rowIdx = db.insert(DatabaseHelper.RECIPE_TABLE_NAME, null, contentValues);
+        db.close();
+        return rowIdx;
     }
 
     // 레시피에 필요한 재료들과 각각에 대해 필요한 양을

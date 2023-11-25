@@ -66,6 +66,8 @@ public class IngredientRepository {
         contentValues.put("name", ingredient.getName());
         contentValues.put("remain", ingredient.getRemain());
         contentValues.put("imagePath", ingredient.getImagePath());
-        return db.insert(DatabaseHelper.INGREDIENT_TABLE_NAME, null, contentValues);
+        long rowIdx = db.insert(DatabaseHelper.INGREDIENT_TABLE_NAME, null, contentValues);
+        db.close();
+        return rowIdx;
     }
 }
