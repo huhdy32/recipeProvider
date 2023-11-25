@@ -12,6 +12,7 @@ import com.example.recipe_provider.dto.RecipeEntity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RecipeRepository {
 
@@ -84,11 +85,32 @@ public class RecipeRepository {
         db.close();
         return rowIdx;
     }
+
     public int delete(final long recipeId) {
         db = databaseHelper.getWritableDatabase();
-        int count = db.delete(DatabaseHelper.RECIPE_TABLE_NAME, "id = ?", new String[] {String.valueOf(recipeId)});
+        int count = db.delete(DatabaseHelper.RECIPE_TABLE_NAME, "id = ?", new String[]{String.valueOf(recipeId)});
         db.close();
         return count;
+    }
+
+    //사용자가 레시피 만들기를 클릭했을떄 일어나는 일
+    public boolean create(final Recipe recipe) {
+        db = databaseHelper.getWritableDatabase();
+        Map<Ingredient, Integer> map = recipe.getIngredientRequirements();
+        for (Ingredient ingredient : map.keySet()) {
+            ContentValues contentValues = new ContentValues();
+            int value = ingredient.getRemain() - map.get(ingredient);
+            if (value < 0) {
+                value = 0;
+            }
+            contentValues.put("remain", value);
+            if (-1 == db.update(DatabaseHelper.INGREDIENT_TABLE_NAME, contentValues, "id = ? ", new String[]{String.valueOf(ingredient.getId())})) {
+                db.close();
+                return false;
+            }
+        }
+        db.close();
+        return true;
     }
 
     // 레시피에 필요한 재료들과 각각에 대해 필요한 양을
