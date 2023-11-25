@@ -47,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "ingredient_id INTEGER," +
                 "requirement INTEGER, " +
                 "FOREIGN KEY(recipe_id) REFERENCES " + RECIPE_TABLE_NAME + "(id) ON DELETE CASCADE," +
-                "FOREIGN KEY(ingredient_id) REFERENCES " + INGREDIENT_TABLE_NAME + "(id)," +
+                "FOREIGN KEY(ingredient_id) REFERENCES " + INGREDIENT_TABLE_NAME + "(id) ON DELETE CASCADE," +
                 "PRIMARY KEY(recipe_id, ingredient_id));");
     }
 
