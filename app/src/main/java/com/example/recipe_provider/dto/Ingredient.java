@@ -13,15 +13,24 @@ public class Ingredient {
         this.imagePath = imagePath;
     }
 
+    public Ingredient(String name, int remain, String imagePath) {
+        this.name = name;
+        this.remain = remain;
+        this.imagePath = imagePath;
+    }
+
     public int getId() {
         return id;
     }
+
     public String getName() {
         return name;
     }
+
     public int getRemain() {
         return remain;
     }
+
     public String getImagePath() {
         return imagePath;
     }

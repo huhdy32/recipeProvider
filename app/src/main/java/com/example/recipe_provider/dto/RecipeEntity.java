@@ -21,6 +21,6 @@ public class RecipeEntity {
         return name;
     }
     public float getRate() {
-        return (float) remain / (float) require;
+        return ((float) remain / (float) require) * 100;
     }
 }

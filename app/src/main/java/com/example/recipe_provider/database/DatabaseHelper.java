@@ -25,8 +25,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         db = sqLiteDatabase;
         init_Tables();
-        initRecipeTable();
         initIngredientTable();
+        initRecipeTable();
         initRelationTable();
     }
 
@@ -59,6 +59,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private void initRecipeTable() {
         ContentValues recipeContent = new ContentValues();
         recipeContent.put("name", "간장계란밥");
+        recipeContent.put("details", "마구마구 넣고 마구마구 비벼 먹기");
+        recipeContent.put("imagePath", "hello, world!");
+        recipeContent.put("name", "한식");
         db.insert(RECIPE_TABLE_NAME, null, recipeContent);
     }
 
@@ -66,14 +69,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues ingredientsContent = new ContentValues();
         ingredientsContent.put("name", "밥");
         ingredientsContent.put("remain", 1000);
+        ingredientsContent.put("imagePath", "Hello2, world!");
         db.insert(INGREDIENT_TABLE_NAME, null, ingredientsContent);
         ingredientsContent = new ContentValues();
         ingredientsContent.put("name", "간장");
         ingredientsContent.put("remain", 1000);
+        ingredientsContent.put("imagePath", "Hello1, world!");
         db.insert(INGREDIENT_TABLE_NAME, null, ingredientsContent);
         ingredientsContent = new ContentValues();
         ingredientsContent.put("name", "계란");
         ingredientsContent.put("remain", 1000);
+        ingredientsContent.put("imagePath", "Hello3, world!");
         db.insert(INGREDIENT_TABLE_NAME, null, ingredientsContent);
     }
 

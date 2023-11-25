@@ -20,6 +20,14 @@ public class Recipe {
         this.recipeType = recipeType;
     }
 
+    public Recipe(String name, String details, String imagePath, HashMap<Ingredient, Integer> ingredientRequirements, String recipeType) {
+        this.name = name;
+        this.details = details;
+        this.imagePath = imagePath;
+        this.ingredientRequirements = ingredientRequirements;
+        this.recipeType = recipeType;
+    }
+
     public int getId() {
         return id;
     }
