@@ -60,18 +60,12 @@ public class IngredientRepository {
         db.close();
         return ingredient;
     }
-    public boolean insert(Ingredient ingredient) {
+    public long insert(Ingredient ingredient) {
         db = databaseHelper.getWritableDatabase();
-        try {
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("name", ingredient.getName());
-            contentValues.put("remain", ingredient.getRemain());
-            contentValues.put("imagePath", ingredient.getImagePath());
-            db.insert(DatabaseHelper.RECIPE_TABLE_NAME, null, contentValues);
-            return true;
-        } finally {
-            db.close();
-            return false;
-        }
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", ingredient.getName());
+        contentValues.put("remain", ingredient.getRemain());
+        contentValues.put("imagePath", ingredient.getImagePath());
+        return db.insert(DatabaseHelper.INGREDIENT_TABLE_NAME, null, contentValues);
     }
 }
