@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "name TEXT UNIQUE, " +
                 "details TEXT, " +
-                "imagePath TEXT UNIQUE, " +
+                "imagePath TEXT, " +
                 "recipeType TEXT);");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + INGREDIENT_TABLE_NAME + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
