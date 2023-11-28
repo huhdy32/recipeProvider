@@ -17,9 +17,13 @@ public class DetailIngredientPopupActivity extends Activity {
         super.onCreate(savedInstanceState);
         // 타이틀 바 제거
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_details_ingredient);
+        setContentView(R.layout.activity_add_ingredient2);
+        IngredientRepository repository = new IngredientRepository(this);
 
-        long itemId = getIntent().getLongExtra("ID", null);
+        long itemId = getIntent().getLongExtra("ID", 0);
+        Ingredient Item = repository.get(itemId);
+
+
 
 
         //삭제 버튼 리스너

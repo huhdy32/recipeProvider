@@ -10,7 +10,7 @@ public class AddIngredientPopupActivity extends Activity {
         super.onCreate(savedInstanceState);
         // 타이틀 바 제거
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_add_ingredient);
+        setContentView(R.layout.activity_details_ingredient);
 
     }
 }

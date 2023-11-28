@@ -49,9 +49,9 @@ public class IngredientFragment extends Fragment {
         IngredientList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                IngredientEntity selectedItem = adapter.getItem(position);
-                Intent intent = new Intent(this, DetailIngredientPopupActivity.class);
-                intent.putExtra("ID", selectedItem.getId());
+                Long selectedID = adapter.getItemId(position);
+                Intent intent = new Intent(getActivity(), DetailIngredientPopupActivity.class);
+                intent.putExtra("ID", selectedID);
                 startActivityForResult(intent, 1);
             }
         });
