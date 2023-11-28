@@ -9,16 +9,13 @@ import android.widget.TextView;
 
 import com.example.recipe_provider.R;
 import com.example.recipe_provider.database.IngredientRepository;
-import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.dto.IngredientEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class IngredientListAdapter extends BaseAdapter {
         private final IngredientRepository repository;
         private List<IngredientEntity> mItems;
-        private Ingredient mItem;
         public IngredientListAdapter(Context context) {
             this.repository = new IngredientRepository(context);
             this.mItems = repository.getAll();
@@ -51,7 +48,7 @@ public class IngredientListAdapter extends BaseAdapter {
             final IngredientEntity item = mItems.get(pos);
             // 아이템 내 위젯에 데이터 반영
             nameItem.setText(item.getName());
-            numItem.setText(item.getRemain() + 'g');
+            numItem.setText(item.getRemain() + " g");
 
             return convertView;
         }

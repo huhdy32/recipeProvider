@@ -7,19 +7,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <TextView
+        android:id="@+id/itemImage"
         android:layout_width="202dp"
         android:layout_height="199dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/suisause"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/itemName"
         android:layout_width="98dp"
         android:layout_height="38dp"
         android:layout_marginTop="24dp"
@@ -29,11 +28,11 @@
         android:text="간장"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.79"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/itemRemain"
         android:background="@drawable/roundrectangle_border"
         android:layout_width="98dp"
         android:layout_height="38dp"
@@ -43,11 +42,11 @@
         android:text="42g"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.79"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toBottomOf="@+id/itemName" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton"
+        android:id="@+id/deleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"

@@ -8,7 +8,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/appCompatButton2"
+        android:id="@+id/makeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -17,18 +17,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <TextView
+        android:id="@+id/itemImage"
         android:layout_width="202dp"
         android:layout_height="199dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/eggbob"
+        android:background="@drawable/roundrectangle_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/itemDescribe"
         android:layout_width="178dp"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
@@ -38,10 +39,10 @@
         android:text="상세 정보"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/itemName" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/itemName"
         android:layout_width="98dp"
         android:layout_height="38dp"
         android:layout_marginTop="16dp"
@@ -51,18 +52,20 @@
         android:text="간장계란밥"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.744"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
+        android:id="@+id/needList"
         android:layout_width="366dp"
         android:layout_height="378dp"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/itemImage" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/deleteBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_red"
