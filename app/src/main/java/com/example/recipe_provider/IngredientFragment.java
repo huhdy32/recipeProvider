@@ -29,6 +29,7 @@ public class IngredientFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_ingredient, container, false);
 
         Button sortButton = (Button) rootView.findViewById(R.id.SortButton);
+        Button AddButton = (Button) rootView.findViewById(R.id.AddButton);
         sortButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +38,14 @@ public class IngredientFragment extends Fragment {
                     sortButton.setText("이름순");
                 else sortButton.setText("잔량순");
                 sortIndex = !sortIndex;
+            }
+        });
+
+        AddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddIngredientPopupActivity.class);
+                startActivityForResult(intent, 1);
             }
         });
 

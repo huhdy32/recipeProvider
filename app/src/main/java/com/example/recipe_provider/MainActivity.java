@@ -12,10 +12,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.recipe_provider.database.DatabaseHelper;
+import com.example.recipe_provider.database.IngredientRepository;
+import com.example.recipe_provider.database.RecipeRepository;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
     public static DatabaseHelper database ;
     // 각 프레그먼트 정의
     RecipeFragment recipefragment;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         // 데이터 베이스 생성 코드
         database = new DatabaseHelper(this, DatabaseHelper.DATABASE_NAME, null, 1);
 
+        //리포지토리 생성 코드
         swapbutton = findViewById(R.id.SwapButton);
 
         recipefragment = new RecipeFragment();
@@ -50,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
     //프래그먼트, 버튼 text 교체 함수
     public void FragmentChange() {
         if (fragmentIndex) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.action_container, ingredientfragment).commit();
-            swapbutton.setText("레시피");
-
-        } else {
             getSupportFragmentManager().beginTransaction().replace(R.id.action_container, recipefragment).commit();
             swapbutton.setText("재료");
+
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.action_container, ingredientfragment).commit();
+            swapbutton.setText("레시피");
         }
     }
 }
