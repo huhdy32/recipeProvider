@@ -46,7 +46,7 @@ public class RecipeListAdapter extends BaseAdapter {
             // 아이템 내 위젯에 데이터 반영
             nameItem.setText(mName.get(pos));
 
-            numItem.setText(mNum.get(pos) + 'g');
+            numItem.setText(mNum.get(pos) + '%');
 
             return convertView;
         }

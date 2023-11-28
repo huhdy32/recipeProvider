@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import com.example.recipe_provider.database.IngredientRepository;
+import com.example.recipe_provider.dto.Ingredient;
+
 public class DetailIngredientPopupActivity extends Activity {
     Button deleteButton;
     @Override
@@ -16,8 +19,8 @@ public class DetailIngredientPopupActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_details_ingredient);
 
-        //Intent에서 재료 이름 받기
-        String itemName = getIntent().getStringExtra("itemKey");
+        long itemId = getIntent().getLongExtra("ID", null);
+
 
         //삭제 버튼 리스너
         deleteButton = (Button) findViewById(R.id.deleteBtn);

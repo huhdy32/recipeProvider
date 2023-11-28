@@ -1,15 +1,22 @@
 package com.example.recipe_provider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.recipe_provider.adapters.IngredientListAdapter;
+import com.example.recipe_provider.database.IngredientRepository;
+import com.example.recipe_provider.dto.Ingredient;
+import com.example.recipe_provider.dto.IngredientEntity;
 
 
 public class IngredientFragment extends Fragment {
@@ -34,10 +41,20 @@ public class IngredientFragment extends Fragment {
         });
 
         ListView IngredientList = (ListView) rootView.findViewById(R.id.IngredientList);
-        MainActivity.CustomAdapter adapter = new MainActivity.CustomAdapter();
+        IngredientListAdapter adapter = new IngredientListAdapter(getContext());
 
         IngredientList.setAdapter(adapter);
 
+        // 아이템 클릭 리스너
+        IngredientList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                IngredientEntity selectedItem = adapter.getItem(position);
+                Intent intent = new Intent(this, DetailIngredientPopupActivity.class);
+                intent.putExtra("ID", selectedItem.getId());
+                startActivityForResult(intent, 1);
+            }
+        });
         return rootView;
     }
 }

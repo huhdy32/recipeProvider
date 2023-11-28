@@ -8,26 +8,30 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.recipe_provider.R;
+import com.example.recipe_provider.database.IngredientRepository;
+import com.example.recipe_provider.dto.IngredientEntity;
 
 import java.util.ArrayList;
+import java.util.List;
+
 public class IngredientListAdapter extends BaseAdapter {
-        private ArrayList<String> mName;
-        private ArrayList<String> mNum;
-        public IngredientListAdapter() {
-            mName = new ArrayList<>();
-            mNum = new ArrayList<>();
+        private final IngredientRepository repository;
+        private List<IngredientEntity> mItems;
+        public IngredientListAdapter(Context context) {
+            this.repository = new IngredientRepository(context);
+            this.mItems = repository.getAll();
         }
         @Override
         public int getCount(){
-            return mName.size();
+            return mItems.size();
         }
         @Override
         public long getItemId(int position){
-            return position;
+            return mItems.get(position).getId();
         }
         @Override
-        public Object getItem(int position){
-            return mName.get(position);
+        public IngredientEntity getItem(int position){
+            return mItems.get(position);
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -42,10 +46,10 @@ public class IngredientListAdapter extends BaseAdapter {
             TextView nameItem = (TextView) convertView.findViewById(R.id.nameItem);
             TextView numItem = (TextView) convertView.findViewById(R.id.numItem);
 
+            final IngredientEntity item = getItem(pos);
             // 아이템 내 위젯에 데이터 반영
-            nameItem.setText(mName.get(pos));
-
-            numItem.setText(mNum.get(pos) + 'g');
+            nameItem.setText(item.getName());
+            numItem.setText(item.getRemain() + 'g');
 
             return convertView;
         }

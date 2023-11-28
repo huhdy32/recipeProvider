@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.recipe_provider.adapters.RecipeListAdapter;
+
 public class RecipeFragment extends Fragment {
 
     public boolean sortIndex = true;
@@ -31,7 +33,7 @@ public class RecipeFragment extends Fragment {
         });
 
         ListView RecipeList = (ListView) rootView.findViewById(R.id.RecipeList);
-        MainActivity.CustomAdapter adapter = new MainActivity.CustomAdapter();
+        RecipeListAdapter adapter = new RecipeListAdapter();
 
         RecipeList.setAdapter(adapter);
 

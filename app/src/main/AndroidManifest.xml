@@ -21,6 +21,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 속성 : Dialog 변경 -->
+        <activity
+            android:name=".DetailRecipePopupActivity"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity
+            android:name=".DetailIngredientPopupActivity"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity
+            android:name=".AddIngredientPopupActivity"
+            android:theme="@android:style/Theme.Dialog"/>
+        <activity
+            android:name=".AddRecipePopupActivity"
+            android:theme="@android:style/Theme.Dialog"/>
     </application>
 
 </manifest>
