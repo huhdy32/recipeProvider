@@ -23,64 +23,6 @@ public class MainActivity extends AppCompatActivity {
     public static boolean fragmentIndex = true;
     Button swapbutton;
 
-    // 리스트뷰 커스텀 어뎁터 정의
-    public static class CustomAdapter extends BaseAdapter {
-        private ArrayList<String> mName;
-        private ArrayList<String> mNum;
-        public CustomAdapter() {
-            mName = new ArrayList<>();
-            mNum = new ArrayList<>();
-
-            // 예시 데이터 추가
-            mName.add("사과");
-            mNum.add("5");
-
-            mName.add("바나나");
-            mNum.add("3");
-
-            mName.add("오렌지");
-            mNum.add("8");
-        }
-        @Override
-        public int getCount(){
-            return mName.size();
-        }
-        @Override
-        public long getItemId(int position){
-            return position;
-        }
-        @Override
-        public Object getItem(int position){
-            return mName.get(position);
-        }
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            final int pos = position;
-            final Context context = parent.getContext();
-
-            if(convertView == null){
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.list_item, parent, false);
-            }
-
-            TextView nameItem = (TextView) convertView.findViewById(R.id.nameItem);
-            TextView numItem = (TextView) convertView.findViewById(R.id.numItem);
-
-            // 아이템 내 위젯에 데이터 반영
-            nameItem.setText(mName.get(pos));
-
-            // 프래그먼트에 따라 수식언 추가
-            String mod;
-            if(fragmentIndex){
-                mod = " %";
-            } else mod = " g";
-
-            numItem.setText(mNum.get(pos) + mod);
-
-            return convertView;
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

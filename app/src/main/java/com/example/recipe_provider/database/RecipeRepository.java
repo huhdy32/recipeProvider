@@ -26,7 +26,8 @@ public class RecipeRepository {
     // 리스트형태로 반환되는 데이터를 위함
     public List<RecipeEntity> getAll() {
         db = databaseHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT r.id, r.name FROM " + DatabaseHelper.RECIPE_TABLE_NAME + " as r", null);
+        Cursor cursor = db.rawQuery("SELECT r.id, r.name FROM " + DatabaseHelper.RECIPE_TABLE_NAME
+                + " as r", null);
         List<RecipeEntity> recipes = new ArrayList<>();
         if (cursor != null && cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
@@ -52,7 +53,8 @@ public class RecipeRepository {
 
     public Recipe get(final long recipeId) {
         db = databaseHelper.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT r.id, r.name, r.details, r.imagePath, r.recipeType FROM " + DatabaseHelper.RECIPE_TABLE_NAME + "as r WHERE id = " + recipeId, null);
+        Cursor cursor = db.rawQuery("SELECT r.id, r.name, r.details, r.imagePath, r.recipeType FROM "
+                + DatabaseHelper.RECIPE_TABLE_NAME + "as r WHERE id = " + recipeId, null);
         Recipe recipe;
         if (cursor.moveToFirst()) {
             recipe = new Recipe(
@@ -101,7 +103,8 @@ public class RecipeRepository {
 
     public int delete(final long recipeId) {
         db = databaseHelper.getWritableDatabase();
-        int count = db.delete(DatabaseHelper.RECIPE_TABLE_NAME, "id = ?", new String[]{String.valueOf(recipeId)});
+        int count = db.delete(DatabaseHelper.RECIPE_TABLE_NAME,
+                "id = ?", new String[]{String.valueOf(recipeId)});
         db.close();
         return count;
     }
@@ -117,7 +120,8 @@ public class RecipeRepository {
                 value = 0;
             }
             contentValues.put("remain", value);
-            if (-1 == db.update(DatabaseHelper.INGREDIENT_TABLE_NAME, contentValues, "id = ? ", new String[]{String.valueOf(ingredient.getId())})) {
+            if (-1 == db.update(DatabaseHelper.INGREDIENT_TABLE_NAME, contentValues,
+                    "id = ? ", new String[]{String.valueOf(ingredient.getId())})) {
                 db.close();
                 return false;
             }
@@ -131,7 +135,8 @@ public class RecipeRepository {
         db = databaseHelper.getReadableDatabase();
         String query = "SELECT i.id, i.name, i.remain, i.imagePath, ri.requirement " +
                 "FROM " + DatabaseHelper.INGREDIENT_TABLE_NAME + " as i " +
-                "INNER JOIN " + DatabaseHelper.RELATION_TABLE_NAME + " as ri ON i.id = ri.ingredient_id " +
+                "INNER JOIN " + DatabaseHelper.RELATION_TABLE_NAME +
+                " as ri ON i.id = ri.ingredient_id " +
                 "WHERE ri.recipe_id = ?";
         Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(recipeIdx)});
         HashMap<Ingredient, Integer> map = new HashMap<>();

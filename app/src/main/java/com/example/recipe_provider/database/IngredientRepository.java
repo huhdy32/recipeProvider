@@ -43,7 +43,7 @@ public class IngredientRepository {
         return ingredientEntities;
     }
 
-    // 목록의 엔터티를 클릭했을 때 재료 출력을 위한 메소드
+    // 목록의 엔티티를 클릭했을 때 재료 출력을 위한 메소드
     public Ingredient get(final long ingredientId) {
         db = databaseHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.INGREDIENT_TABLE_NAME + " WHERE id = " + ingredientId, null);
