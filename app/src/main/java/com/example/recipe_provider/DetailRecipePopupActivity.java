@@ -51,13 +51,13 @@ public class DetailRecipePopupActivity extends Activity {
         itemImage.setText(Item.getImagePath());
 
         //리스트뷰 설정
-        // ListView needList = (ListView) findViewById(R.id.needList);
+        ListView needList = (ListView) findViewById(R.id.needList);
 
-        //오류 검출 : itemId 검증
-        // Log.i("itemId", String.valueOf(itemId));
-        // NeedListAdapter adapter = new NeedListAdapter(this, itemId);
+        // 오류 검출 : itemId 검증
+        Log.i("itemId", String.valueOf(itemId));
+        NeedListAdapter adapter = new NeedListAdapter(this, itemId);
 
-        // needList.setAdapter(adapter);
+        needList.setAdapter(adapter);
 
 
         //삭제 버튼 리스너
