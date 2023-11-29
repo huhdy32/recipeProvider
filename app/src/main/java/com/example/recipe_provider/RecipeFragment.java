@@ -35,6 +35,15 @@ public class RecipeFragment extends Fragment {
             }
         });
 
+        Button addButton = (Button) rootView.findViewById(R.id.AddButton);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddRecipePopupActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
+
         ListView RecipeList = (ListView) rootView.findViewById(R.id.RecipeList);
         RecipeListAdapter adapter = new RecipeListAdapter(getContext());
 
@@ -50,6 +59,7 @@ public class RecipeFragment extends Fragment {
                 startActivityForResult(intent, 1);
             }
         });
+
         return rootView;
     }
 

@@ -10,6 +10,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.recipe_provider.adapters.RecipeListAdapter;
 import com.example.recipe_provider.database.IngredientRepository;
@@ -24,8 +25,15 @@ public class DetailIngredientPopupActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_details_ingredient);
         IngredientRepository repository = new IngredientRepository(this);
+        long itemId = -1;
 
-        long itemId = getIntent().getLongExtra("ID", 0);
+        //컨텍스트 전달 예외 처리
+        if(getIntent().hasExtra("ID")) {
+            itemId = getIntent().getLongExtra("ID", -1);
+        }else{
+            Toast.makeText(this, "ID 값 없음!", Toast.LENGTH_SHORT).show();
+            finish();
+        }
 
         // ID 기반 Ingredient 참조
         Ingredient Item = repository.get(itemId);
@@ -41,10 +49,11 @@ public class DetailIngredientPopupActivity extends Activity {
 
         //삭제 버튼 리스너
         deleteButton = (Button) findViewById(R.id.deleteBtn);
+        long finalItemId = itemId;
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                repository.delete(itemId);
+                repository.delete(finalItemId);
                 finish();
             }
         });

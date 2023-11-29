@@ -21,16 +21,18 @@ public class NeedListAdapter extends BaseAdapter {
         private long idx;
         private final RecipeRepository repository;
         private HashMap<Ingredient, Integer> mRequireItem;
+        private List<Map.Entry<Ingredient, Integer>> mEntries;
 
         //해당 레시피의 필요 재료 해시맵을 불러오기.
         public NeedListAdapter(Context context, long idx) {
             this.repository = new RecipeRepository(context);
             this.idx = idx;
             this.mRequireItem = repository.getRequireIngredient(idx);
+            this.mEntries = new ArrayList<>(mRequireItem.entrySet());
         }
         @Override
         public int getCount(){
-            return mRequireItem.size();
+            return mEntries.size();
         }
         @Override
         public long getItemId(int position){
@@ -53,11 +55,7 @@ public class NeedListAdapter extends BaseAdapter {
             TextView nameItem = (TextView) convertView.findViewById(R.id.nameItem);
             TextView numItem = (TextView) convertView.findViewById(R.id.numItem);
 
-
-            // mRequireItem의 키-값 쌍을 리스트로 변환
-            List<Map.Entry<Ingredient, Integer>> entries = new ArrayList<>(mRequireItem.entrySet());
-
-            Map.Entry<Ingredient, Integer> entry = entries.get(position);
+            Map.Entry<Ingredient, Integer> entry = mEntries.get(pos);
             Ingredient requireItem = entry.getKey();
             Integer requireAmount = entry.getValue();
 

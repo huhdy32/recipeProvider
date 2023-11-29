@@ -28,9 +28,16 @@ public class DetailRecipePopupActivity extends Activity {
         setContentView(R.layout.activity_details_recipe);
         RecipeRepository repository = new RecipeRepository(this);
 
-        long itemId = getIntent().getLongExtra("ID", 0);
+        long itemId = -1;
 
-        // ID 기반 Recipe 참조
+        //컨텍스트 전달 예외 처리
+        if(getIntent().hasExtra("ID")) {
+            itemId = getIntent().getLongExtra("ID", -1);
+        }else{
+            Toast.makeText(this, "ID 값 없음!", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        //ID 기반 Recipe 참조
         Recipe Item = repository.get(itemId);
 
         TextView itemName = findViewById(R.id.itemName);
@@ -52,10 +59,12 @@ public class DetailRecipePopupActivity extends Activity {
 
         //삭제 버튼 리스너
         deleteButton = (Button) findViewById(R.id.deleteBtn);
+
+        final long finalItemID = itemId;
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                repository.delete(itemId);
+                repository.delete(finalItemID);
                 finish();
             }
         });

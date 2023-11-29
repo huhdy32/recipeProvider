@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.recipe_provider.database.IngredientRepository;
+import com.example.recipe_provider.database.RecipeRepository;
 import com.example.recipe_provider.dto.Ingredient;
 
 public class AddIngredientPopupActivity extends Activity {
@@ -18,24 +19,15 @@ public class AddIngredientPopupActivity extends Activity {
         super.onCreate(savedInstanceState);
         // 타이틀 바 제거
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_add_ingredient);
+        setContentView(R.layout.activity_add_reciepe);
 
-        IngredientRepository repository = new IngredientRepository(this);
+        RecipeRepository repository = new RecipeRepository(this);
 
         EditText itemName = findViewById(R.id.itemName);
+        EditText itemType = findViewById(R.id.itemType);
+        EditText itemDescribe = findViewById(R.id.itemDescribe);
         EditText itemAmount = findViewById(R.id.itemAmount);
         Button addButton = findViewById(R.id.addBtn);
-
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = String.valueOf(itemName.getText());
-                int Remain = Integer.parseInt(String.valueOf(itemAmount.getText()));
-                Ingredient item = new Ingredient(0, name, Remain, null);
-                repository.insert(item);
-                finish();
-            }
-        });
 
     }
     @Override
