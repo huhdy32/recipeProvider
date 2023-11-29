@@ -55,7 +55,7 @@ public class RecipeRepository {
     public Recipe get(final long recipeId) {
         db = databaseHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT r.id, r.name, r.details, r.imagePath, r.recipeType FROM "
-                + DatabaseHelper.RECIPE_TABLE_NAME + "as r WHERE id = " + recipeId, null);
+                + DatabaseHelper.RECIPE_TABLE_NAME + " as r WHERE id = " + recipeId, null);
         Recipe recipe;
         if (cursor.moveToFirst()) {
             recipe = new Recipe(

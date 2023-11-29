@@ -61,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         recipeContent.put("name", "간장계란밥");
         recipeContent.put("details", "마구마구 넣고 마구마구 비벼 먹기");
         recipeContent.put("imagePath", "hello, world!");
-        recipeContent.put("name", "한식");
+        recipeContent.put("recipeType", "한식");
         db.insert(RECIPE_TABLE_NAME, null, recipeContent);
     }
 
@@ -90,11 +90,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("recipe_id", recipeIdx);
         contentValues.put("ingredient_id", 1);
         contentValues.put("requirement", 500);
+
         db.insert(RELATION_TABLE_NAME, null, contentValues);
         contentValues = new ContentValues();
         contentValues.put("recipe_id", recipeIdx);
         contentValues.put("ingredient_id", 2);
         contentValues.put("requirement", 500);
+
         db.insert(RELATION_TABLE_NAME, null, contentValues);
         contentValues = new ContentValues();
         contentValues.put("recipe_id", recipeIdx);
