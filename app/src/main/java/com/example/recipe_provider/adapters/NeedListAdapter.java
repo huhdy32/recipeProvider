@@ -10,7 +10,6 @@ import android.widget.TextView;
 import com.example.recipe_provider.R;
 import com.example.recipe_provider.database.RecipeRepository;
 import com.example.recipe_provider.dto.Ingredient;
-import com.example.recipe_provider.dto.Recipe;
 import com.example.recipe_provider.dto.RecipeEntity;
 
 import java.util.ArrayList;
@@ -18,26 +17,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RecipeListAdapter extends BaseAdapter {
+public class NeedListAdapter extends BaseAdapter {
+        private long idx;
         private final RecipeRepository repository;
-        private List<RecipeEntity> mItems;
+        private HashMap<Ingredient, Integer> mRequireItem;
 
-        //레시피 리스트 불러오기.
-        public RecipeListAdapter(Context context) {
+        //해당 레시피의 필요 재료 해시맵을 불러오기.
+        public NeedListAdapter(Context context, long idx) {
             this.repository = new RecipeRepository(context);
-            this.mItems = repository.getAll();
+            this.idx = idx;
+            this.mRequireItem = repository.getRequireIngredient(idx);
         }
         @Override
         public int getCount(){
-            return mItems.size();
+            return mRequireItem.size();
         }
         @Override
         public long getItemId(int position){
-            return mItems.get(position).getId();
+            return position;
         }
         @Override
         public Object getItem(int position){
-            return mItems.get(position);
+            return mRequireItem.get(position);
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -52,10 +53,16 @@ public class RecipeListAdapter extends BaseAdapter {
             TextView nameItem = (TextView) convertView.findViewById(R.id.nameItem);
             TextView numItem = (TextView) convertView.findViewById(R.id.numItem);
 
-            // 아이템 내 위젯에 데이터 반영
-            final RecipeEntity item = mItems.get(pos);
-            nameItem.setText(item.getName());
-            numItem.setText(item.getRate() + " %");
+
+            // mRequireItem의 키-값 쌍을 리스트로 변환
+            List<Map.Entry<Ingredient, Integer>> entries = new ArrayList<>(mRequireItem.entrySet());
+
+            Map.Entry<Ingredient, Integer> entry = entries.get(position);
+            Ingredient requireItem = entry.getKey();
+            Integer requireAmount = entry.getValue();
+
+            nameItem.setText(requireItem.getName());
+            numItem.setText(requireAmount.toString());
 
             return convertView;
         }

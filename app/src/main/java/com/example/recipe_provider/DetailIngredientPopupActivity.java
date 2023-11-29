@@ -44,6 +44,7 @@ public class DetailIngredientPopupActivity extends Activity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                repository.delete(itemId);
                 finish();
             }
         });

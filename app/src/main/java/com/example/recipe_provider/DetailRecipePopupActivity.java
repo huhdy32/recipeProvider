@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.recipe_provider.adapters.NeedListAdapter;
 import com.example.recipe_provider.adapters.RecipeListAdapter;
 import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.database.RecipeRepository;
@@ -44,7 +45,7 @@ public class DetailRecipePopupActivity extends Activity {
         //리스트뷰 설정
         ListView needList = (ListView) findViewById(R.id.needList);
 
-        RecipeListAdapter adapter = new RecipeListAdapter(this, itemId);
+        NeedListAdapter adapter = new NeedListAdapter(this, itemId);
 
         needList.setAdapter(adapter);
 

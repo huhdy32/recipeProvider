@@ -36,7 +36,7 @@ public class RecipeFragment extends Fragment {
         });
 
         ListView RecipeList = (ListView) rootView.findViewById(R.id.RecipeList);
-        RecipeListAdapter adapter = new RecipeListAdapter(getContext(), -1);
+        RecipeListAdapter adapter = new RecipeListAdapter(getContext());
 
         RecipeList.setAdapter(adapter);
 
