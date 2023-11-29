@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.dto.Recipe;
@@ -132,6 +133,7 @@ public class RecipeRepository {
 
     // 레시피에 필요한 재료들과 각각에 대해 필요한 양을
     public HashMap<Ingredient, Integer> getRequireIngredient(final long recipeIdx) {
+        Log.i("getRequireIngredient", "실행");
         db = databaseHelper.getReadableDatabase();
         String query = "SELECT i.id, i.name, i.remain, i.imagePath, ri.requirement " +
                 "FROM " + DatabaseHelper.INGREDIENT_TABLE_NAME + " as i " +
