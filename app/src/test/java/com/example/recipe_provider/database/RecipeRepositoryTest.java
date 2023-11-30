@@ -30,7 +30,7 @@ public class RecipeRepositoryTest {
         RecipeRepository recipeRepository = new RecipeRepository(context);
         List<RecipeEntity> recipeEntries = recipeRepository.getAll();
         RecipeEntity recipe = recipeEntries.get(0);
-        assertTrue(recipe.getRate() > 100);
+        assertEquals(recipe.getName(), "간장계란밥");
     }
 
     @Test
@@ -38,6 +38,7 @@ public class RecipeRepositoryTest {
         RecipeRepository recipeRepository = new RecipeRepository(context);
         Recipe recipe = recipeRepository.get(1);
         assertEquals(recipe.getName(), "간장계란밥");
+        assertEquals(recipe.getRecipeType(), "한식");
     }
 
     @Test
