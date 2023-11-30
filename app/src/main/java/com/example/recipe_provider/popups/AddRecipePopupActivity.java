@@ -1,4 +1,4 @@
-package com.example.recipe_provider;
+package com.example.recipe_provider.popups;
 
 import static java.security.AccessController.getContext;
 
@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.recipe_provider.R;
 import com.example.recipe_provider.adapters.IngredientListAdapter;
 import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.database.RecipeRepository;
@@ -47,7 +48,7 @@ public class AddRecipePopupActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Long selectedID = adapter.getItemId(position);
-                // 예시 해시맵 임의 생성, 수정 요망
+                // 아직 구현 안됨!
             }
         });
 

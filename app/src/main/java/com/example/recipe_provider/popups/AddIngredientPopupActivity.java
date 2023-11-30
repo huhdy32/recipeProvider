@@ -1,6 +1,7 @@
-package com.example.recipe_provider;
+package com.example.recipe_provider.popups;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -8,7 +9,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.recipe_provider.R;
 import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.database.RecipeRepository;
 import com.example.recipe_provider.dto.Ingredient;
@@ -33,8 +36,11 @@ public class AddIngredientPopupActivity extends Activity {
                 String name = String.valueOf(itemName.getText());
                 int Remain = Integer.parseInt(String.valueOf(itemAmount.getText()));
                 Ingredient item = new Ingredient(0, name, Remain, null);
-                repository.insert(item);
-                finish();
+                if(repository.insert(item) >= 0){
+                    finish();
+                }else{
+                    Toast.makeText(AddIngredientPopupActivity.this, "추가 실패!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

@@ -1,5 +1,6 @@
-package com.example.recipe_provider;
+package com.example.recipe_provider.popups;
 
+import static android.app.ProgressDialog.show;
 import static java.security.AccessController.getContext;
 
 import android.app.Activity;
@@ -12,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.recipe_provider.MainActivity;
+import com.example.recipe_provider.R;
 import com.example.recipe_provider.adapters.RecipeListAdapter;
 import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.dto.Ingredient;
@@ -53,8 +56,11 @@ public class DetailIngredientPopupActivity extends Activity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                repository.delete(finalItemId);
-                finish();
+                if(repository.delete(finalItemId) >= 0){
+                    finish();
+                }else{
+                    Toast.makeText(DetailIngredientPopupActivity.this, "삭제 실패!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

@@ -8,12 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.recipe_provider.adapters.IngredientListAdapter;
 import com.example.recipe_provider.adapters.RecipeListAdapter;
+import com.example.recipe_provider.popups.AddRecipePopupActivity;
+import com.example.recipe_provider.popups.DetailRecipePopupActivity;
 
 public class RecipeFragment extends Fragment {
 
@@ -57,6 +57,7 @@ public class RecipeFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), DetailRecipePopupActivity.class);
                 intent.putExtra("ID", selectedID);
                 startActivityForResult(intent, 1);
+                adapter.notifyDataSetChanged();
             }
         });
 

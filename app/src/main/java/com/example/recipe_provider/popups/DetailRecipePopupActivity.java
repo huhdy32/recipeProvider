@@ -1,4 +1,4 @@
-package com.example.recipe_provider;
+package com.example.recipe_provider.popups;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.recipe_provider.R;
 import com.example.recipe_provider.adapters.NeedListAdapter;
 import com.example.recipe_provider.adapters.RecipeListAdapter;
 import com.example.recipe_provider.database.IngredientRepository;
@@ -21,6 +22,7 @@ import com.example.recipe_provider.dto.Recipe;
 public class DetailRecipePopupActivity extends Activity {
     Button deleteButton;
     Button makeButton;
+    Button closeButton;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -72,14 +74,25 @@ public class DetailRecipePopupActivity extends Activity {
             }
         });
 
+        //닫기 버튼 리스너
+        closeButton = (Button) findViewById(R.id.closeBtn);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         //만들기 버튼 리스너
         makeButton = (Button) findViewById(R.id.makeBtn);
         makeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 String msg;
-                if(repository.create(Item))
+                if(repository.create(Item)) {
                     msg = "재료 제거됨!";
+                    adapter.notifyDataSetChanged();
+                }
                 else
                     msg = "재료가 부족합니다.";
                 Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();

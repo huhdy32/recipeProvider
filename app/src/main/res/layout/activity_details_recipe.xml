@@ -1,58 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/makeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="48dp"
         android:background="@drawable/button_green"
         android:text="음식 만들기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/needList" />
 
     <TextView
         android:id="@+id/itemImage"
         android:layout_width="202dp"
         android:layout_height="199dp"
-        android:layout_marginTop="16dp"
         android:background="@drawable/roundrectangle_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/itemDescribe"
-        android:layout_width="178dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="160dp"
+        android:layout_height="159dp"
         android:background="@drawable/roundrectangle_border"
         android:gravity="center_horizontal"
         android:text="상세 정보"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toBottomOf="@+id/itemName" />
 
     <TextView
         android:id="@+id/itemName"
         android:layout_width="98dp"
         android:layout_height="38dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginStart="32dp"
         android:background="@drawable/roundrectangle_border"
         android:gravity="center"
         android:text="간장계란밥"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.744"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,10 +52,20 @@
         android:id="@+id/needList"
         android:layout_width="366dp"
         android:layout_height="378dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemImage" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_red"
+        android:text="닫기"
+        app:layout_constraintStart_toEndOf="@+id/deleteBtn"
+        app:layout_constraintTop_toBottomOf="@+id/needList" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/deleteBtn"
@@ -71,8 +73,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_red"
         android:text="레시피 삭제"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/makeBtn"
+        app:layout_constraintTop_toBottomOf="@+id/needList" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
