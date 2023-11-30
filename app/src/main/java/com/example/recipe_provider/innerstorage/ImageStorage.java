@@ -44,7 +44,7 @@ public class ImageStorage {
 
     public static boolean loadImageFromStorage(String path, ImageView imageView) {
         try {
-            File imageFile = new File(path, "profile.jpg");
+            File imageFile = new File(path);
             Bitmap bitmapImage = BitmapFactory.decodeStream(new FileInputStream(imageFile));
             imageView.setImageBitmap(bitmapImage);
         } catch (FileNotFoundException e) {
