@@ -54,7 +54,13 @@ public class AddRecipePopupActivity extends Activity {
         NeedList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                return;
+                Ingredient target = needListAdapter.getItem(position);
+                if (RequireItems.containsKey(target)) {
+                    RequireItems.remove(target);
+                    System.out.println("재료 제거됨!");
+                } else {
+                    System.out.println("오류가 발생했습니다.");
+                }
             }
         });
 
