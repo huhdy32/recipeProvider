@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.recipe_provider.R;
 import com.example.recipe_provider.adapters.IngredientListAdapter;
+import com.example.recipe_provider.adapters.NeedListAdapter;
 import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.database.RecipeRepository;
 import com.example.recipe_provider.dto.Ingredient;
@@ -46,23 +47,34 @@ public class AddRecipePopupActivity extends Activity {
         Button addIngredient = findViewById(R.id.ingredientAddBtn);
 
         ListView NeedList = (ListView) findViewById(R.id.needList);
+        NeedListAdapter needListAdapter = new NeedListAdapter(this, RequireItems);
+
+        NeedList.setAdapter(needListAdapter);
+
+        NeedList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                return;
+            }
+        });
+
 
         //리스트뷰 설정
         ListView IngredientList = (ListView) findViewById(R.id.IngredientList);
-        IngredientListAdapter adapter = new IngredientListAdapter(this);
+        IngredientListAdapter ingredientListAdapter = new IngredientListAdapter(this);
 
-        IngredientList.setAdapter(adapter);
+        IngredientList.setAdapter(ingredientListAdapter);
 
         IngredientList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                IngredientEntity selectedItem = adapter.getItem(position);
-                ingredientId = adapter.getItemId(position);
+                IngredientEntity selectedItem = ingredientListAdapter.getItem(position);
+                ingredientId = ingredientListAdapter.getItemId(position);
 
                 searchBar.setText(selectedItem.getName());
                 amount_max = selectedItem.getRemain();
                 itemAmount.setText(amount_max);
-                ingredientId = adapter.getItemId(position);
+                ingredientId = ingredientListAdapter.getItemId(position);
             }
         });
 
@@ -78,6 +90,7 @@ public class AddRecipePopupActivity extends Activity {
 
                 Ingredient toInput = ingredientRepository.get(ingredientId);
                 RequireItems.put(toInput, amount);
+                needListAdapter.notifyDataSetChanged();
             }
         });
 

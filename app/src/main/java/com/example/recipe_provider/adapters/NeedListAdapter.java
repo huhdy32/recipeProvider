@@ -30,6 +30,14 @@ public class NeedListAdapter extends BaseAdapter {
             this.mRequireItem = repository.getRequireIngredient(idx);
             this.mEntries = new ArrayList<>(mRequireItem.entrySet());
         }
+
+        public NeedListAdapter(Context context,
+                               HashMap<Ingredient, Integer> ingredientIntegerHashMap){
+            this.repository = new RecipeRepository(context);
+            this.mRequireItem = ingredientIntegerHashMap;
+            this.mEntries = new ArrayList<>(mRequireItem.entrySet());
+        }
+
         @Override
         public int getCount(){
             return mEntries.size();
