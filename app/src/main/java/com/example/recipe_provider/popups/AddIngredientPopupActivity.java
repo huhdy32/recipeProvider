@@ -56,7 +56,7 @@ public class AddIngredientPopupActivity extends Activity {
             public void onClick(View v) {
                 String name = String.valueOf(itemName.getText());
                 int Remain = Integer.parseInt(String.valueOf(itemAmount.getText()));
-                Ingredient item = new Ingredient(0, name, Remain, null);
+                Ingredient item = new Ingredient(0, name, Remain, imagePath);
                 if(repository.insert(item) >= 0){
                     finish();
                 }else{

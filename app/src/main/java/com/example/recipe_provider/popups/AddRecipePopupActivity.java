@@ -1,13 +1,19 @@
 package com.example.recipe_provider.popups;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,12 +26,17 @@ import com.example.recipe_provider.database.RecipeRepository;
 import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.dto.IngredientEntity;
 import com.example.recipe_provider.dto.Recipe;
+import com.example.recipe_provider.innerstorage.ImageStorage;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class AddRecipePopupActivity extends Activity {
-    public Long ingredientId;
+    public int ingredientId;
     public Integer amount_max;
+    public Integer PICK_IMAGE_REQUEST = 1;
+    public String imagePath = null;
+    ImageView itemImage;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -38,6 +49,7 @@ public class AddRecipePopupActivity extends Activity {
 
         final HashMap<Ingredient, Integer> RequireItems = new HashMap<>();
 
+        itemImage = findViewById(R.id.itemImage);
         EditText itemName = findViewById(R.id.itemName);
         EditText itemType = findViewById(R.id.itemType);
         EditText itemDescribe = findViewById(R.id.itemDescribe);
@@ -51,6 +63,15 @@ public class AddRecipePopupActivity extends Activity {
 
         NeedList.setAdapter(needListAdapter);
 
+        itemImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, PICK_IMAGE_REQUEST);
+            }
+        });
+
         NeedList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
@@ -61,6 +82,7 @@ public class AddRecipePopupActivity extends Activity {
                 } else {
                     System.out.println("오류가 발생했습니다.");
                 }
+                needListAdapter.notifyDataSetChanged();
             }
         });
 
@@ -75,12 +97,12 @@ public class AddRecipePopupActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 IngredientEntity selectedItem = ingredientListAdapter.getItem(position);
-                ingredientId = ingredientListAdapter.getItemId(position);
+                ingredientId = selectedItem.getId();
 
                 searchBar.setText(selectedItem.getName());
                 amount_max = selectedItem.getRemain();
-                itemAmount.setText(amount_max);
-                ingredientId = ingredientListAdapter.getItemId(position);
+                itemAmount.setText(String.valueOf(amount_max));
+                Log.i("normal", "onItemClick used well");
             }
         });
 
@@ -89,6 +111,7 @@ public class AddRecipePopupActivity extends Activity {
             public void onClick(View v) {
                 String amountText = itemAmount.getText().toString();
                 Integer amount = Integer.parseInt(amountText);
+                Log.i("변수값", "amout = " + amount);
                 if(amount > amount_max){
                     Toast.makeText(AddRecipePopupActivity.this, "재고가 부족합니다!", Toast.LENGTH_SHORT).show();
                     return;
@@ -107,13 +130,30 @@ public class AddRecipePopupActivity extends Activity {
                 String type = String.valueOf(itemType.getText());
                 String Describe = String.valueOf(itemDescribe.getText());
 
-                final Recipe recipe = new Recipe(name, Describe, "imagepath", RequireItems, type);
+                final Recipe recipe = new Recipe(name, Describe, imagePath, RequireItems, type);
                 recipeRepository.insert(recipe);
                 finish();
             }
         });
 
     }
+    // 갤러리에서 사진을 가져온 후 처리
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri imageUri = data.getData();
+            try {
+                ImageStorage storage = new ImageStorage(); // contexts?
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                itemImage.setImageBitmap(bitmap);
+                imagePath = storage.saveToInternalStorage(bitmap, this);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event){
         if(event.getAction()==MotionEvent.ACTION_OUTSIDE){

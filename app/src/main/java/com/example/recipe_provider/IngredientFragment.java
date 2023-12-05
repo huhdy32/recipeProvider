@@ -63,7 +63,6 @@ public class IngredientFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), DetailIngredientPopupActivity.class);
                 intent.putExtra("ID", selectedID);
                 startActivityForResult(intent, 1);
-                adapter.notifyDataSetChanged();
             }
         });
         return rootView;
