@@ -99,7 +99,6 @@ public class RecipeRepository {
             }
         }
         db.close();
-        ;
     }
 
     public int delete(final long recipeId) {
