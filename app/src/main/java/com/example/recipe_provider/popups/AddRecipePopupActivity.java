@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class AddRecipePopupActivity extends Activity {
-    public int ingredientId;
+    public long ingredientId;
     public Integer amount_max;
     public Integer PICK_IMAGE_REQUEST = 1;
     public String imagePath = null;

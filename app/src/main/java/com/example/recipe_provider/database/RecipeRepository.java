@@ -83,15 +83,16 @@ public class RecipeRepository {
         contentValues.put("details", recipe.getDetails());
         contentValues.put("imagePath", recipe.getImagePath());
         contentValues.put("recipeType", recipe.getRecipeType());
-        if (-1 == db.insert(DatabaseHelper.RECIPE_TABLE_NAME, null, contentValues)) {
+        long recipeIdx = db.insert(DatabaseHelper.RECIPE_TABLE_NAME, null, contentValues);
+        if (-1 == recipeIdx) {
             db.close();
             throw new NullPointerException("잘못된 형식 입니다.");
         }
-
         for (Ingredient ingredient : recipe.getIngredientRequirements().keySet()) {
             contentValues = new ContentValues();
-            contentValues.put("recipe_id", recipe.getId());
+            contentValues.put("recipe_id", recipeIdx);
             contentValues.put("ingredient_id", ingredient.getId());
+            Log.i("데이터베이스", ingredient.getId() + " 는 주어진 재료 아이디 ");
             contentValues.put("requirement", recipe.getIngredientRequirements().get(ingredient));
             if (-1 == db.insert(DatabaseHelper.RELATION_TABLE_NAME, null, contentValues)) {
                 db.close();
@@ -99,6 +100,7 @@ public class RecipeRepository {
             }
         }
         db.close();
+        ;
     }
 
     public int delete(final long recipeId) {
