@@ -1,50 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/skyblue">
 
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/makeBtn"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:background="@drawable/button_green"
+        android:layout_marginStart="16dp"
         android:text="음식 만들기"
+        app:backgroundTint="@color/green"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/needList" />
 
-    <TextView
+    <ImageView
         android:id="@+id/itemImage"
         android:layout_width="202dp"
         android:layout_height="199dp"
-        android:background="@drawable/roundrectangle_border"
+        android:background="@drawable/rectangle_border"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <LinearLayout
         android:id="@+id/itemDescribe"
         android:layout_width="160dp"
         android:layout_height="159dp"
-        android:background="@drawable/roundrectangle_border"
         android:gravity="center_horizontal"
-        android:text="상세 정보"
-        android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
-        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+        app:layout_constraintTop_toBottomOf="@+id/itemName"
+        android:background="@drawable/rectangle_border"
+        android:orientation="vertical">
 
-    <TextView
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="세부 사항"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:background="@color/purple"
+            style="@style/Widget.MaterialComponents.TextView"
+            android:layout_weight="6" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/itemDescribeText"
+            style="@style/Widget.MaterialComponents.TextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="8dp" />
+
+    </LinearLayout>
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/itemName"
         android:layout_width="98dp"
         android:layout_height="38dp"
         android:layout_marginStart="32dp"
-        android:background="@drawable/roundrectangle_border"
+        style="@style/Widget.MaterialComponents.TextView"
+        android:background="@drawable/rectangle_border"
         android:gravity="center"
-        android:text="간장계란밥"
+        android:text="재료 이름"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,26 +76,31 @@
         android:layout_width="366dp"
         android:layout_height="378dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/rectangle_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemImage" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/closeBtn"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_red"
+        android:layout_marginStart="12dp"
         android:text="닫기"
+        app:backgroundTint="@color/red"
         app:layout_constraintStart_toEndOf="@+id/deleteBtn"
         app:layout_constraintTop_toBottomOf="@+id/needList" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteBtn"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_red"
+        android:layout_marginStart="12dp"
         android:text="레시피 삭제"
+        app:backgroundTint="@color/red"
         app:layout_constraintStart_toEndOf="@+id/makeBtn"
         app:layout_constraintTop_toBottomOf="@+id/needList" />
 

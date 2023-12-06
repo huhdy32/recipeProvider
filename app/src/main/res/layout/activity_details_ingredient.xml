@@ -1,60 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/skyblue">
 
-    <TextView
+    <ImageView
         android:id="@+id/itemImage"
         android:layout_width="202dp"
         android:layout_height="199dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
+        android:background="@drawable/rectangle_border"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/itemName"
         android:layout_width="98dp"
         android:layout_height="38dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/roundrectangle_border"
-        android:layout_marginEnd="52dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/rectangle_border"
+        style="@style/Widget.MaterialComponents.TextView"
         android:gravity="center"
-        android:text="간장"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
+        android:text="재료 이름"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/itemRemain"
-        android:background="@drawable/roundrectangle_border"
         android:layout_width="98dp"
         android:layout_height="38dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rectangle_border"
+        style="@style/Widget.MaterialComponents.TextView"
         android:gravity="center"
-        android:text="42g"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
+        android:text="재료 양"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toBottomOf="@+id/itemName" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteBtn"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/button_red"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="@color/red"
         android:text="재료 삭제"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toBottomOf="@+id/itemRemain" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

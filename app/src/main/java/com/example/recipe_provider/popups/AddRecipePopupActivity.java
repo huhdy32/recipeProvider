@@ -111,12 +111,13 @@ public class AddRecipePopupActivity extends Activity {
             public void onClick(View v) {
                 String amountText = itemAmount.getText().toString();
                 Integer amount = Integer.parseInt(amountText);
-                Log.i("변수값", "amout = " + amount);
+                Log.i("amount",  "amount = " + amount);
+                Log.i("ingredientId", "Id = " + ingredientId);
                 if(amount > amount_max){
                     Toast.makeText(AddRecipePopupActivity.this, "재고가 부족합니다!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                // 오류 발생?
                 Ingredient toInput = ingredientRepository.get(ingredientId);
                 RequireItems.put(toInput, amount);
                 needListAdapter.notifyDataSetChanged();
@@ -137,7 +138,7 @@ public class AddRecipePopupActivity extends Activity {
         });
 
     }
-    // 갤러리에서 사진을 가져온 후 처리
+    // 갤러리에서 사진을 가져온 후 저장
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

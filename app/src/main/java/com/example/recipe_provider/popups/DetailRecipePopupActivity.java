@@ -1,12 +1,14 @@
 package com.example.recipe_provider.popups;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,13 +46,16 @@ public class DetailRecipePopupActivity extends Activity {
         Recipe Item = repository.get(itemId);
 
         TextView itemName = findViewById(R.id.itemName);
-        TextView itemDescribe = findViewById(R.id.itemDescribe);
-        // 임시적으로 textview로 선언함.
-        TextView itemImage = findViewById(R.id.itemImage);
+        TextView itemDescribe = findViewById(R.id.itemDescribeText);
+        //이미지뷰 선언
+        ImageView itemImage = findViewById(R.id.itemImage);
 
         itemName.setText(Item.getName());
         itemDescribe.setText(Item.getDetails());
-        itemImage.setText(Item.getImagePath());
+
+        //이미지 로드
+        String imagePath = Item.getImagePath();
+        itemImage.setImageBitmap(BitmapFactory.decodeFile(imagePath));
 
         //리스트뷰 설정
         ListView needList = (ListView) findViewById(R.id.needList);

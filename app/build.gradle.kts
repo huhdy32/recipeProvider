@@ -34,7 +34,8 @@ android {
 }
 
 dependencies {
-    testImplementation ("org.robolectric:robolectric:4.5.1")
+    implementation ("com.google.android.material:material:1.5.0") // xml 디자인
+    testImplementation ("org.robolectric:robolectric:4.5.1") // 디버그
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
