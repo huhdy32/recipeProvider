@@ -1,12 +1,12 @@
 package com.example.recipe_provider.dto;
 
 public class Ingredient {
-    private int id;
+    private long id;
     private String name;
     private int remain;
     private String imagePath;
 
-    public Ingredient(int id, String name, int remain, String imagePath) {
+    public Ingredient(long id, String name, int remain, String imagePath) {
         this.id = id;
         this.name = name;
         this.remain = remain;
@@ -19,7 +19,7 @@ public class Ingredient {
         this.imagePath = imagePath;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

@@ -29,6 +29,11 @@ public class IngredientRepositoryTest {
         assertEquals(ingredientRepository.getAll().size(), 3);
     }
 
+//    @Test
+//    public void TEST_GET_INGREDIENT_BY_ID() {
+//        IngredientRepository ingredientRepository = new IngredientRepository(context);
+//        assertEquals(ingredientRepository.get(0));
+//    }
     @Test
     public void TEST_INSERT_INGREDIENTS() {
         IngredientRepository ingredientRepository = new IngredientRepository(context);

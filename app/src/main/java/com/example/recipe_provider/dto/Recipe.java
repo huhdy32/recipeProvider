@@ -3,7 +3,7 @@ package com.example.recipe_provider.dto;
 import java.util.HashMap;
 
 public class Recipe {
-    private int id;
+    private long id;
     private String name;
     private String details;
     private String imagePath;
@@ -11,7 +11,7 @@ public class Recipe {
     // 이 레시피 를 만드는 데 필요한 재료와 그 양이 <Key, Value>로 저장됨
     private String recipeType;
 
-    public Recipe(int id, String name, String details, String imagePath, HashMap<Ingredient, Integer> ingredientRequirements, String recipeType) {
+    public Recipe(long id, String name, String details, String imagePath, HashMap<Ingredient, Integer> ingredientRequirements, String recipeType) {
         this.id = id;
         this.name = name;
         this.details = details;
@@ -28,7 +28,7 @@ public class Recipe {
         this.recipeType = recipeType;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
