@@ -113,10 +113,10 @@ public class AddRecipePopupActivity extends Activity {
                 Integer amount = Integer.parseInt(amountText);
                 Log.i("amount",  "amount = " + amount);
                 Log.i("ingredientId", "Id = " + ingredientId);
-                if(amount > amount_max){
-                    Toast.makeText(AddRecipePopupActivity.this, "재고가 부족합니다!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                if(amount > amount_max){
+//                    Toast.makeText(AddRecipePopupActivity.this, "재고가 부족합니다!", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
                 // 오류 발생?
                 Ingredient toInput = ingredientRepository.get(ingredientId);
                 RequireItems.put(toInput, amount);
