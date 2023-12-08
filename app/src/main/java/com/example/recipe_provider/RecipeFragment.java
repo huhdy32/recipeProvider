@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.example.recipe_provider.adapters.RecipeListAdapter;
@@ -24,6 +25,16 @@ public class RecipeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_recipe, container, false);
+
+        Button searchButton = rootView.findViewById(R.id.SearchButton);
+        EditText searchBox = (EditText) rootView.findViewById(R.id.search_bar);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (searchBox.getText() == null) return;
+                recipeListAdapter.search(searchBox.getText().toString());
+            }
+        });
 
         Button sortButton = (Button) rootView.findViewById(R.id.SortButton);
         sortButton.setOnClickListener(new View.OnClickListener() {

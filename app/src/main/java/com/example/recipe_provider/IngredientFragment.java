@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -32,6 +33,16 @@ public class IngredientFragment extends Fragment {
 
         Button sortButton = (Button) rootView.findViewById(R.id.SortButton);
         Button AddButton = (Button) rootView.findViewById(R.id.AddButton);
+        Button searchButton = rootView.findViewById(R.id.SearchButton);
+        EditText searchBar = (EditText) rootView.findViewById(R.id.search_bar);
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (searchBar.getText() == null) return;
+                ingredientListAdapter.search(searchBar.getText().toString());
+            }
+        });
         sortButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

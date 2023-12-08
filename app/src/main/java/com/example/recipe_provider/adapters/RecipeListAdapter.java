@@ -38,6 +38,17 @@ public class RecipeListAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
+    public void search(String text) {
+        RecipeEntity entity = mItems.stream()
+                .filter(recipeEntity -> recipeEntity.getName().contains(text))
+                .findFirst()
+                .orElse(null);
+        if (entity == null) return;
+        mItems.remove(entity);
+        mItems.add(0, entity);
+        this.notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return mItems.size();

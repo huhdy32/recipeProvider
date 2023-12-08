@@ -11,6 +11,7 @@ import com.example.recipe_provider.R;
 import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.dto.IngredientEntity;
+import com.example.recipe_provider.dto.RecipeEntity;
 
 import java.util.Collections;
 import java.util.List;
@@ -30,6 +31,17 @@ public class IngredientListAdapter extends BaseAdapter {
         } else {
             Collections.sort(mItems, (((o1, o2) -> (int) (o2.getRemain() - o1.getRemain()))));
         }
+        this.notifyDataSetChanged();
+    }
+
+    public void search(String text) {
+        IngredientEntity entity = mItems.stream()
+                .filter(ingredientEntity -> ingredientEntity.getName().contains(text))
+                .findFirst()
+                .orElse(null);
+        if (entity == null) return;
+        mItems.remove(entity);
+        mItems.add(0, entity);
         this.notifyDataSetChanged();
     }
 
