@@ -31,7 +31,7 @@ public class RecipeListAdapter extends BaseAdapter {
 
     public void sort(boolean sortIndex) {
         if (sortIndex == false) {
-            Collections.sort(mItems, ((o1, o2) -> o2.getName().compareTo(o1.getName())));
+            Collections.sort(mItems, ((o1, o2) -> o1.getName().compareTo(o2.getName())));
         }else {
             Collections.sort(mItems, (((o1, o2) -> (int) (o2.getRate()- o1.getRate()))));
         }
