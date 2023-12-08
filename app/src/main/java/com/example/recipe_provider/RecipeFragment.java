@@ -30,6 +30,7 @@ public class RecipeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // 정렬 버튼 클릭 시 실행
+                recipeListAdapter.sort(sortIndex);
                 if(sortIndex)
                     sortButton.setText("이름순");
                 else sortButton.setText("추천순");

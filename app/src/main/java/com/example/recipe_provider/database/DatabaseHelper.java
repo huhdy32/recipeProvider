@@ -73,12 +73,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.insert(INGREDIENT_TABLE_NAME, null, ingredientsContent);
         ingredientsContent = new ContentValues();
         ingredientsContent.put("name", "간장");
-        ingredientsContent.put("remain", 1000);
+        ingredientsContent.put("remain", 900);
         ingredientsContent.put("imagePath", "Hello1, world!");
         db.insert(INGREDIENT_TABLE_NAME, null, ingredientsContent);
         ingredientsContent = new ContentValues();
         ingredientsContent.put("name", "계란");
-        ingredientsContent.put("remain", 1000);
+        ingredientsContent.put("remain", 800);
         ingredientsContent.put("imagePath", "Hello3, world!");
         db.insert(INGREDIENT_TABLE_NAME, null, ingredientsContent);
     }

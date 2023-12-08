@@ -36,6 +36,7 @@ public class IngredientFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // 정렬 버튼 클릭 시 실행
+                ingredientListAdapter.sort(sortIndex);
                 if(sortIndex)
                     sortButton.setText("이름순");
                 else sortButton.setText("잔량순");
