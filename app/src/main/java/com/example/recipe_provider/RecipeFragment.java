@@ -18,6 +18,8 @@ import com.example.recipe_provider.popups.DetailRecipePopupActivity;
 public class RecipeFragment extends Fragment {
 
     public boolean sortIndex = true;
+    RecipeListAdapter recipeListAdapter;
+    ListView recipeView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,24 +46,29 @@ public class RecipeFragment extends Fragment {
             }
         });
 
-        ListView RecipeList = (ListView) rootView.findViewById(R.id.RecipeList);
-        RecipeListAdapter adapter = new RecipeListAdapter(getContext());
+        recipeView = (ListView) rootView.findViewById(R.id.RecipeList);
+        recipeListAdapter = new RecipeListAdapter(getContext());
 
-        RecipeList.setAdapter(adapter);
+        recipeView.setAdapter(recipeListAdapter);
 
         // 아이템 클릭 리스너
-        RecipeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        recipeView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Long selectedID = adapter.getItemId(position);
+                Long selectedID = recipeListAdapter.getItemId(position);
                 Intent intent = new Intent(getActivity(), DetailRecipePopupActivity.class);
                 intent.putExtra("ID", selectedID);
                 startActivityForResult(intent, 1);
-                adapter.notifyDataSetChanged();
             }
         });
 
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        recipeListAdapter = new RecipeListAdapter(getContext());
+        recipeView.setAdapter(recipeListAdapter);
+        super.onResume();
+    }
 }
