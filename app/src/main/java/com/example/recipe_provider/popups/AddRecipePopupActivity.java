@@ -145,10 +145,10 @@ public class AddRecipePopupActivity extends Activity {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri imageUri = data.getData();
             try {
-                ImageStorage storage = new ImageStorage(); // contexts?
+//                ImageStorage storage = new ImageStorage(); // contexts?
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
                 itemImage.setImageBitmap(bitmap);
-                imagePath = storage.saveToInternalStorage(bitmap, this);
+                imagePath = ImageStorage.saveToInternalStorage(bitmap, this);
             } catch (IOException e) {
                 e.printStackTrace();
             }
