@@ -20,6 +20,7 @@ import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.database.RecipeRepository;
 import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.dto.Recipe;
+import com.example.recipe_provider.innerstorage.ImageStorage;
 
 public class DetailRecipePopupActivity extends Activity {
     Button deleteButton;
@@ -56,6 +57,7 @@ public class DetailRecipePopupActivity extends Activity {
         //이미지 로드
         String imagePath = Item.getImagePath();
         itemImage.setImageBitmap(BitmapFactory.decodeFile(imagePath));
+//        ImageStorage.loadImageFromStorage(imagePath, itemImage);
 
         //리스트뷰 설정
         ListView needList = (ListView) findViewById(R.id.needList);

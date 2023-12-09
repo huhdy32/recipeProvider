@@ -20,6 +20,7 @@ import com.example.recipe_provider.R;
 import com.example.recipe_provider.adapters.RecipeListAdapter;
 import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.dto.Ingredient;
+import com.example.recipe_provider.innerstorage.ImageStorage;
 
 public class DetailIngredientPopupActivity extends Activity {
     Button deleteButton;
@@ -53,6 +54,7 @@ public class DetailIngredientPopupActivity extends Activity {
 
         String imagePath = Item.getImagePath();
         itemImage.setImageBitmap(BitmapFactory.decodeFile(imagePath));
+//        ImageStorage.loadImageFromStorage(imagePath, itemImage);
 
         //삭제 버튼 리스너
         deleteButton = (Button) findViewById(R.id.deleteBtn);
