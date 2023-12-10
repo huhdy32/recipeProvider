@@ -12,12 +12,12 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/makeBtn"
-        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="음식 만들기"
         app:backgroundTint="@color/green"
+        style="@style/Widget.MaterialComponents.Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/needList" />
 
@@ -39,19 +39,17 @@
         android:background="@drawable/rectangle_border"
         android:orientation="vertical">
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="세부 사항"
             android:textSize="15dp"
             android:textColor="@color/black"
             android:background="@color/purple"
-            style="@style/Widget.MaterialComponents.TextView"
             android:layout_weight="6" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/itemDescribeText"
-            style="@style/Widget.MaterialComponents.TextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -59,12 +57,11 @@
 
     </LinearLayout>
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/itemName"
         android:layout_width="98dp"
         android:layout_height="38dp"
         android:layout_marginStart="32dp"
-        style="@style/Widget.MaterialComponents.TextView"
         android:background="@drawable/rectangle_border"
         android:gravity="center"
         android:text="재료 이름"
@@ -84,23 +81,23 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/closeBtn"
-        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="닫기"
         app:backgroundTint="@color/red"
+        style="@style/Widget.MaterialComponents.Button"
         app:layout_constraintStart_toEndOf="@+id/deleteBtn"
         app:layout_constraintTop_toBottomOf="@+id/needList" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteBtn"
-        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:text="레시피 삭제"
         app:backgroundTint="@color/red"
+        style="@style/Widget.MaterialComponents.Button"
         app:layout_constraintStart_toEndOf="@+id/makeBtn"
         app:layout_constraintTop_toBottomOf="@+id/needList" />
 
