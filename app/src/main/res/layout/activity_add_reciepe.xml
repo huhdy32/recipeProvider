@@ -7,7 +7,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-
     <ImageView
         android:id="@+id/itemImage"
         android:layout_width="145dp"
@@ -100,8 +99,8 @@
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/orange"
         android:drawableRight="@drawable/arrow_up"
-        android:textColor="@color/black"
         android:text="추가"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/AmountBox"
@@ -109,15 +108,15 @@
 
     <EditText
         android:id="@+id/itemDescribe"
-        android:layout_width="294dp"
-        android:layout_height="183dp"
+        android:layout_width="315dp"
+        android:layout_height="135dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/rectangle_border"
         android:gravity="center_horizontal"
         android:hint="상세 정보 입력"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IngredientList" />
+        app:layout_constraintTop_toBottomOf="@+id/itemImage" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addBtn"
@@ -128,7 +127,7 @@
         android:text="레시피 추가"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemDescribe" />
+        app:layout_constraintTop_toBottomOf="@+id/IngredientList" />
 
     <ListView
         android:id="@+id/IngredientList"
@@ -143,15 +142,14 @@
 
     <ListView
         android:id="@+id/needList"
-        android:layout_width="325dp"
-        android:layout_height="111dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="317dp"
+        android:layout_height="109dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/rectangle_border"
         android:divider="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemImage" />
+        app:layout_constraintTop_toBottomOf="@+id/itemDescribe" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
