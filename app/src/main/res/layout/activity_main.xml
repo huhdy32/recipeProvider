@@ -14,11 +14,11 @@
         android:textSize="40dp"/>
 
     <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button"
         android:id="@+id/SwapButton"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:text="재료"
-        style="@style/Widget.MaterialComponents.Button"/>
+        android:text="재료" />
 
     <FrameLayout
         android:id="@+id/action_container"
