@@ -96,6 +96,8 @@ public class DetailRecipePopupActivity extends Activity {
             @Override
             public void onClick(View v){
                 String msg;
+
+                // 이거 동작 안함, 수정요망
                 if(repository.create(Item)) {
                     msg = "재료 제거됨!";
                     adapter.notifyDataSetChanged();
