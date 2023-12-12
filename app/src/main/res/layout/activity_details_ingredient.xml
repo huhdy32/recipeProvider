@@ -10,14 +10,14 @@
 
     <ImageView
         android:id="@+id/itemImage"
-        android:layout_width="202dp"
-        android:layout_height="199dp"
+        android:layout_width="188dp"
+        android:layout_height="184dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/rectangle_border"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.314" />
 
     <TextView
         android:id="@+id/itemName"
@@ -35,30 +35,49 @@
         app:layout_constraintStart_toEndOf="@+id/itemImage"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/itemRemain"
-        android:layout_width="98dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="24dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/RemainBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="112dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/rectangle_border"
         android:gravity="center"
-        android:text="재료 양"
-        android:textColor="@color/black"
+        android:hint="잔량"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
-        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+        app:layout_constraintTop_toBottomOf="@+id/itemName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/itemRemain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteBtn"
         style="@style/Widget.MaterialComponents.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
+        android:layout_width="109dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="16dp"
         android:text="재료 삭제"
         app:backgroundTint="@color/red"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
-        app:layout_constraintTop_toBottomOf="@+id/itemRemain" />
+        app:layout_constraintTop_toBottomOf="@+id/updateBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/updateBtn"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="109dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="변경"
+        app:backgroundTint="@color/green"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toBottomOf="@+id/RemainBox" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

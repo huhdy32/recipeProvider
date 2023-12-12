@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,9 +22,11 @@ import com.example.recipe_provider.adapters.RecipeListAdapter;
 import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.innerstorage.ImageStorage;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class DetailIngredientPopupActivity extends Activity {
     Button deleteButton;
+    Button updateButton;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -45,20 +48,30 @@ public class DetailIngredientPopupActivity extends Activity {
         Ingredient Item = repository.get(itemId);
 
         TextView itemName = findViewById(R.id.itemName);
-        TextView itemRemain = findViewById(R.id.itemRemain);
-        // 임시적으로 textview로 선언함.
+        EditText itemRemain = findViewById(R.id.itemRemain);
         ImageView itemImage = findViewById(R.id.itemImage);
 
         itemName.setText(Item.getName());
-        itemRemain.setText(Item.getRemain() + " g");
+        itemRemain.setText(String.valueOf(Item.getRemain()));
 
         String imagePath = Item.getImagePath();
         itemImage.setImageBitmap(BitmapFactory.decodeFile(imagePath));
 //        ImageStorage.loadImageFromStorage(imagePath, itemImage);
 
+        long finalItemId = itemId;
+
+        updateButton = (Button) findViewById(R.id.updateBtn);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer amount = Integer.parseInt(itemRemain.getText().toString());
+                repository.updateRemain(finalItemId, amount);
+                finish();
+            }
+        });
+
         //삭제 버튼 리스너
         deleteButton = (Button) findViewById(R.id.deleteBtn);
-        long finalItemId = itemId;
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

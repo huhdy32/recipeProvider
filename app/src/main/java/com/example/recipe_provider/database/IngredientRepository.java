@@ -79,4 +79,15 @@ public class IngredientRepository {
         db.close();
         return count;
     }
+
+    // 재료 잔량 변경
+    public int updateRemain(long ingredientId, int newRemain) {
+        db = databaseHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("remain", newRemain);
+
+        int count = db.update(DatabaseHelper.INGREDIENT_TABLE_NAME, contentValues, "id = ?", new String[] {String.valueOf(ingredientId)});
+        db.close();
+        return count;
+    }
 }

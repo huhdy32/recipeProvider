@@ -20,6 +20,7 @@ import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.database.RecipeRepository;
 import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.innerstorage.ImageStorage;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
 
@@ -36,8 +37,8 @@ public class AddIngredientPopupActivity extends Activity {
 
         IngredientRepository repository = new IngredientRepository(this);
 
-        EditText itemName = findViewById(R.id.itemName);
-        EditText itemAmount = findViewById(R.id.itemAmount);
+        TextInputEditText itemName = findViewById(R.id.itemName);
+        TextInputEditText itemAmount = findViewById(R.id.itemAmount);
         Button addButton = findViewById(R.id.addBtn);
         imageUpload = findViewById(R.id.itemImage);
 
