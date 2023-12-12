@@ -53,6 +53,12 @@ public class NeedListAdapter extends BaseAdapter {
             Map.Entry<Ingredient, Integer> entry = mEntries.get(position);
             return entry.getKey();
         }
+        // hashmap으로 받은 데이터 업데이트
+        public void updateData(HashMap<Ingredient, Integer> newData) {
+            this.mRequireItem = newData;
+            this.mEntries = new ArrayList<>(mRequireItem.entrySet());
+            notifyDataSetChanged();
+        }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {

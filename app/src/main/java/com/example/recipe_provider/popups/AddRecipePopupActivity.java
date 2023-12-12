@@ -82,7 +82,7 @@ public class AddRecipePopupActivity extends Activity {
                 } else {
                     System.out.println("오류가 발생했습니다.");
                 }
-                needListAdapter.notifyDataSetChanged();
+                needListAdapter.updateData(RequireItems);
             }
         });
 
@@ -120,7 +120,7 @@ public class AddRecipePopupActivity extends Activity {
                 // 오류 발생?
                 Ingredient toInput = ingredientRepository.get(ingredientId);
                 RequireItems.put(toInput, amount);
-                needListAdapter.notifyDataSetChanged();
+                needListAdapter.updateData(RequireItems);
             }
         });
 
