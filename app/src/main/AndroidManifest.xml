@@ -31,16 +31,16 @@
         <!-- 속성 : Dialog 변경 -->
         <activity
             android:name=".popups.DetailRecipePopupActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
+            android:theme="@style/MaterialDialog_custom"/>
         <activity
             android:name=".popups.DetailIngredientPopupActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
+            android:theme="@style/MaterialDialog_custom"/>
         <activity
             android:name=".popups.AddIngredientPopupActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
+            android:theme="@style/MaterialDialog_custom"/>
         <activity
             android:name=".popups.AddRecipePopupActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"/>
+            android:theme="@style/MaterialDialog_custom"/>
     </application>
 
 </manifest>

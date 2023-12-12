@@ -1,52 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@color/skyblue">
+    android:layout_height="wrap_content">
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/makeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="음식 만들기"
-        app:backgroundTint="@color/green"
         style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="86dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="만들기"
+        android:textSize="15dp"
+        app:backgroundTint="@color/green"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/needList" />
+        app:layout_constraintTop_toBottomOf="@+id/itemDescribe" />
 
     <ImageView
         android:id="@+id/itemImage"
-        android:layout_width="202dp"
-        android:layout_height="199dp"
+        android:layout_width="144dp"
+        android:layout_height="153dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
         android:background="@drawable/rectangle_border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+
+    <TextView
+        android:id="@+id/itemName"
+        android:layout_width="139dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/rectangle_border"
+        android:gravity="center"
+        android:text="레시피 이름"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/itemDescribe"
-        android:layout_width="160dp"
-        android:layout_height="159dp"
-        android:gravity="center_horizontal"
-        app:layout_constraintStart_toEndOf="@+id/itemImage"
-        app:layout_constraintTop_toBottomOf="@+id/itemName"
+        android:layout_width="311dp"
+        android:layout_height="287dp"
+        android:layout_marginLeft="8dp"
         android:background="@drawable/rectangle_border"
-        android:orientation="vertical">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="세부 사항"
-            android:textSize="15dp"
-            android:textColor="@color/black"
+            android:layout_weight="8"
             android:background="@color/purple"
-            android:layout_weight="6" />
+            android:text="세부 사항"
+            android:textColor="@color/black"
+            android:textSize="15dp" />
 
         <TextView
             android:id="@+id/itemDescribeText"
@@ -57,49 +73,44 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/itemName"
-        android:layout_width="98dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="32dp"
-        android:background="@drawable/rectangle_border"
-        android:gravity="center"
-        android:text="재료 이름"
-        app:layout_constraintStart_toEndOf="@+id/itemImage"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ListView
         android:id="@+id/needList"
-        android:layout_width="366dp"
-        android:layout_height="378dp"
+        android:layout_width="159dp"
+        android:layout_height="151dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="15dp"
         android:background="@drawable/rectangle_border"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemImage" />
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toBottomOf="@+id/itemName" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/closeBtn"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="닫기"
+        android:textSize="15dp"
         app:backgroundTint="@color/red"
-        style="@style/Widget.MaterialComponents.Button"
         app:layout_constraintStart_toEndOf="@+id/deleteBtn"
-        app:layout_constraintTop_toBottomOf="@+id/needList" />
+        app:layout_constraintTop_toBottomOf="@+id/itemDescribe" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteBtn"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="레시피 삭제"
+        android:textSize="15dp"
         app:backgroundTint="@color/red"
-        style="@style/Widget.MaterialComponents.Button"
         app:layout_constraintStart_toEndOf="@+id/makeBtn"
-        app:layout_constraintTop_toBottomOf="@+id/needList" />
+        app:layout_constraintTop_toBottomOf="@+id/itemDescribe" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,118 +5,153 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@color/skyblue">
-
+    android:layout_height="wrap_content">
 
 
     <ImageView
         android:id="@+id/itemImage"
-        android:layout_width="140dp"
-        android:layout_height="181dp"
+        android:layout_width="145dp"
+        android:layout_height="120dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:src="@drawable/eggbob"
+        android:background="@drawable/rectangle_border"
+        android:src="@drawable/image_add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/itemName"
-        android:layout_width="101dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/roundrectangle_border"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/NameBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="152dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
-        android:hint="간장계란밥"
+        android:hint="레시피 이름"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/itemType"
-        android:layout_width="92dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/roundrectangle_border"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/itemName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TypeBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="153dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="16dp"
         android:gravity="center"
-        android:hint="한식"
-        app:layout_constraintStart_toStartOf="@+id/needList"
-        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+        android:hint="레시피 종류"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toBottomOf="@+id/NameBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/itemType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/searchBar"
-        android:layout_width="136dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/roundrectangle_border"
+        android:layout_width="104dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rectangle_border"
         android:gravity="center"
-        android:text="재료 선택"
+        android:text="선택된 재료"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemImage" />
-
-    <EditText
-        android:id="@+id/itemAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/roundrectangle_border"
-        android:gravity="center"
-        android:hint="수량 입력"
-        app:layout_constraintStart_toEndOf="@+id/searchBar"
         app:layout_constraintTop_toBottomOf="@+id/needList" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/ingredientAddBtn"
-        android:layout_width="65dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="8dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/AmountBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="97dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/button_gray"
-        android:text="확인"
-        app:layout_constraintStart_toEndOf="@+id/itemAmount"
+        android:gravity="center"
+        android:hint="재료 수량"
+        app:layout_constraintStart_toEndOf="@+id/searchBar"
+        app:layout_constraintTop_toBottomOf="@+id/needList">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/itemAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ingredientAddBtn"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="92dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/orange"
+        android:drawableRight="@drawable/arrow_up"
+        android:textColor="@color/black"
+        android:text="추가"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/AmountBox"
         app:layout_constraintTop_toBottomOf="@+id/needList" />
 
     <EditText
         android:id="@+id/itemDescribe"
-        android:layout_width="289dp"
-        android:layout_height="141dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="294dp"
+        android:layout_height="183dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/roundrectangle_border"
+        android:background="@drawable/rectangle_border"
         android:gravity="center_horizontal"
         android:hint="상세 정보 입력"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IngredientList" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/addBtn"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:background="@drawable/button_orange"
+        android:backgroundTint="@color/green"
         android:text="레시피 추가"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemDescribe" />
 
     <ListView
         android:id="@+id/IngredientList"
-        android:layout_width="291dp"
-        android:layout_height="175dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="319dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rectangle_border"
+        android:divider="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredientAddBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/AmountBox" />
 
     <ListView
         android:id="@+id/needList"
-        android:layout_width="163dp"
-        android:layout_height="114dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="325dp"
+        android:layout_height="111dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/itemImage"
-        app:layout_constraintTop_toBottomOf="@+id/itemType" />
+        android:background="@drawable/rectangle_border"
+        android:divider="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemImage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
