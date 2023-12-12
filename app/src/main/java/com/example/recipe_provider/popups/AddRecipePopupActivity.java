@@ -113,13 +113,14 @@ public class AddRecipePopupActivity extends Activity {
                 Integer amount = Integer.parseInt(amountText);
                 Log.i("amount",  "amount = " + amount);
                 Log.i("ingredientId", "Id = " + ingredientId);
-//                if(amount > amount_max){
-//                    Toast.makeText(AddRecipePopupActivity.this, "재고가 부족합니다!", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-                // 오류 발생?
                 Ingredient toInput = ingredientRepository.get(ingredientId);
-                RequireItems.put(toInput, amount);
+
+                // 재료 중복 추가 방지(동작X, 수정 요망)
+                if(RequireItems.containsKey(toInput)){
+                    Toast.makeText(AddRecipePopupActivity.this, "이미 추가되었습니다!", Toast.LENGTH_SHORT).show();
+                }else{
+                    RequireItems.put(toInput, amount);
+                }
                 needListAdapter.updateData(RequireItems);
             }
         });
