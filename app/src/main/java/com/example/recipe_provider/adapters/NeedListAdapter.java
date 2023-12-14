@@ -20,8 +20,8 @@ import java.util.Map;
 public class NeedListAdapter extends BaseAdapter {
         private long idx;
         private final RecipeRepository repository;
-        private HashMap<Ingredient, Integer> mRequireItem;
-        private List<Map.Entry<Ingredient, Integer>> mEntries;
+        protected HashMap<Ingredient, Integer> mRequireItem;
+        protected List<Map.Entry<Ingredient, Integer>> mEntries;
 
         //해당 레시피의 필요 재료 해시맵을 불러오기
         public NeedListAdapter(final Context context, final long idx) {
