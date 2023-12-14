@@ -21,10 +21,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/NameBox"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="152dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="153dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="28dp"
         android:gravity="center"
         android:hint="레시피 이름"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
@@ -33,26 +33,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/itemName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TypeBox"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="153dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:hint="레시피 종류"
-        app:layout_constraintStart_toEndOf="@+id/itemImage"
-        app:layout_constraintTop_toBottomOf="@+id/NameBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/itemType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="57dp"
             android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>

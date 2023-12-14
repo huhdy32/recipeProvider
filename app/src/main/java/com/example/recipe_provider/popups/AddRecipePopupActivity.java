@@ -51,7 +51,6 @@ public class AddRecipePopupActivity extends Activity {
 
         itemImage = findViewById(R.id.itemImage);
         EditText itemName = findViewById(R.id.itemName);
-        EditText itemType = findViewById(R.id.itemType);
         EditText itemDescribe = findViewById(R.id.itemDescribe);
         EditText itemAmount = findViewById(R.id.itemAmount);
         TextView searchBar = findViewById(R.id.searchBar);
@@ -130,10 +129,10 @@ public class AddRecipePopupActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String name = String.valueOf(itemName.getText());
-                String type = String.valueOf(itemType.getText());
                 String Describe = String.valueOf(itemDescribe.getText());
 
-                final Recipe recipe = new Recipe(name, Describe, imagePath, RequireItems, type);
+                //레시피 타입 기능 삭제 : 한식 고정
+                final Recipe recipe = new Recipe(name, Describe, imagePath, RequireItems, "한식");
                 recipeRepository.insert(recipe);
                 finish();
             }

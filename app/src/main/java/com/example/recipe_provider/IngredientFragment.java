@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -33,16 +34,22 @@ public class IngredientFragment extends Fragment {
 
         Button sortButton = (Button) rootView.findViewById(R.id.SortButton);
         Button AddButton = (Button) rootView.findViewById(R.id.AddButton);
-        Button searchButton = rootView.findViewById(R.id.SearchButton);
-        EditText searchBar = (EditText) rootView.findViewById(R.id.search_bar);
+        SearchView searchView = rootView.findViewById(R.id.search_view);
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View v) {
-                if (searchBar.getText() == null) return;
-                ingredientListAdapter.search(searchBar.getText().toString());
+            public boolean onQueryTextSubmit(String query) {
+                if (query == null) return true;
+                ingredientListAdapter.search(query);
+                return true;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                ingredientListAdapter.search(newText);
+                return true;
             }
         });
+
         sortButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

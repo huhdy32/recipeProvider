@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.example.recipe_provider.adapters.RecipeListAdapter;
 import com.example.recipe_provider.popups.AddRecipePopupActivity;
@@ -26,13 +27,19 @@ public class RecipeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_recipe, container, false);
 
-        Button searchButton = rootView.findViewById(R.id.SearchButton);
-        EditText searchBox = (EditText) rootView.findViewById(R.id.search_bar);
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        SearchView searchView = rootView.findViewById(R.id.search_view);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View v) {
-                if (searchBox.getText() == null) return;
-                recipeListAdapter.search(searchBox.getText().toString());
+            public boolean onQueryTextSubmit(String query) {
+                if (query == null) return true;
+                recipeListAdapter.search(query);
+                return true;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                recipeListAdapter.search(newText);
+                return true;
             }
         });
 
