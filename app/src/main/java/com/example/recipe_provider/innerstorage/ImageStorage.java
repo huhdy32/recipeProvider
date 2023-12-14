@@ -26,7 +26,7 @@ public class ImageStorage {
         File directory = contextWrapper.getDir("imageDir", Context.MODE_PRIVATE);
 
         Date now = new Date();
-        final String imagePath = new SimpleDateFormat("yyyyMMdd_HHmmss").format(now);
+        final String imagePath = new SimpleDateFormat("yyyyMMdd_HHmmss").format(now) + bitmapImage.toString();
 
         File filePath = new File(directory, imagePath);
 
