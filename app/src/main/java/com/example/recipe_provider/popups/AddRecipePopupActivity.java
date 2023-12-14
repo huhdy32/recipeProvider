@@ -116,6 +116,7 @@ public class AddRecipePopupActivity extends Activity {
                 Ingredient toInput = ingredientRepository.get(ingredientId);
 
                 // 재료 중복 추가 방지(동작X, 수정 요망)
+                // toInput은 객체이므로 주소값 기반으로 비교 하기 때문에 작동 안했던 것임
                 if(RequireItems.containsKey(toInput)){
                     Toast.makeText(AddRecipePopupActivity.this, "이미 추가되었습니다!", Toast.LENGTH_SHORT).show();
                 }else{

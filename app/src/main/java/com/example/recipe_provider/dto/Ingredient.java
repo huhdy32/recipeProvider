@@ -1,5 +1,7 @@
 package com.example.recipe_provider.dto;
 
+import androidx.annotation.Nullable;
+
 public class Ingredient {
     private long id;
     private String name;
@@ -35,4 +37,20 @@ public class Ingredient {
         return imagePath;
     }
 
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != getClass()) {
+            return false;
+        }
+        Ingredient ingredient = (Ingredient) obj;
+        return ingredient.getName().equals(name);
+    }
 }
