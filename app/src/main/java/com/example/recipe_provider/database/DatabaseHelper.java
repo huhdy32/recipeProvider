@@ -4,16 +4,15 @@ import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
-
-import com.example.recipe_provider.dto.Ingredient;
+import com.example.recipe_provider.R;
+import com.example.recipe_provider.innerstorage.ImageStorage;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db;
+    private final Context context;
     public static final String DATABASE_NAME = "DATABASE";
     private static final int DATABASE_VERSION = 1;
     static final String RECIPE_TABLE_NAME = "RECIPE";
@@ -24,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private DatabaseHelper(Context context) {
         super(context.getApplicationContext(), DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context.getApplicationContext();
     }
 
     public static synchronized DatabaseHelper getInstance(Context context) {
@@ -69,53 +69,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void initRecipeTable() {
-        ContentValues recipeContent = new ContentValues();
-        recipeContent.put("name", "간장계란밥");
-        recipeContent.put("details", "마구마구 넣고 마구마구 비벼 먹기");
-        recipeContent.put("imagePath", "hello, world!");
-        recipeContent.put("recipeType", "한식");
-        db.insert(RECIPE_TABLE_NAME, null, recipeContent);
+        insertRecipe("간장계란밥", "마구마구 넣고 마구마구 비벼 먹기", R.drawable.eggbob, "한식");
+        insertRecipe("신라면", "물! 물부터 넣기!!", R.drawable.recipe_ramyeon, "한식");
     }
 
     private void initIngredientTable() {
-        ContentValues ingredientsContent = new ContentValues();
-        ingredientsContent.put("name", "밥");
-        ingredientsContent.put("remain", 1000);
-        ingredientsContent.put("imagePath", "Hello2, world!");
-        db.insert(INGREDIENT_TABLE_NAME, null, ingredientsContent);
-        ingredientsContent = new ContentValues();
-        ingredientsContent.put("name", "간장");
-        ingredientsContent.put("remain", 900);
-        ingredientsContent.put("imagePath", "Hello1, world!");
-        db.insert(INGREDIENT_TABLE_NAME, null, ingredientsContent);
-        ingredientsContent = new ContentValues();
-        ingredientsContent.put("name", "계란");
-        ingredientsContent.put("remain", 800);
-        ingredientsContent.put("imagePath", "Hello3, world!");
-        db.insert(INGREDIENT_TABLE_NAME, null, ingredientsContent);
+        insertIngredient("밥", 1000, R.drawable.rice);
+        insertIngredient("간장", 900, R.drawable.suisause);
+        insertIngredient("계란", 800, R.drawable.egg);
     }
 
     private void initRelationTable() {
-        int recipeIdx = 1;
+        insertRelation(1, 1, 500);
+        insertRelation(1, 2, 500);
+        insertRelation(1, 3, 500);
+    }
 
+    private void insertRecipe(String name, String details, int resourceId, String category) {
+        ContentValues recipeContent = new ContentValues();
+        recipeContent.put("name", name);
+        recipeContent.put("details", details);
+        recipeContent.put("imagePath",
+                ImageStorage.saveToInternalStorage(
+                        ImageStorage.getBitmapFromDrawable(context, resourceId)
+                        , context
+                )
+        );
+        recipeContent.put("recipeType", category);
+        db.insert(RECIPE_TABLE_NAME, null, recipeContent);
+    }
+
+    private void insertIngredient(String name, int remain, int resourceId) {
+        ContentValues ingreidientContent = new ContentValues();
+        db.insert(INGREDIENT_TABLE_NAME, null, ingreidientContent);
+        ingreidientContent = new ContentValues();
+        ingreidientContent.put("name", name);
+        ingreidientContent.put("remain", remain);
+        ingreidientContent.put("imagePath",
+                ImageStorage.saveToInternalStorage(
+                        ImageStorage.getBitmapFromDrawable(context, resourceId)
+                        , context
+                )
+        );
+        db.insert(INGREDIENT_TABLE_NAME, null, ingreidientContent);
+    }
+
+
+    private void insertRelation(int recipeIdx, int ingredientIdx, int amount) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("recipe_id", recipeIdx);
-        contentValues.put("ingredient_id", 1);
-        contentValues.put("requirement", 500);
-
+        contentValues.put("ingredient_id", ingredientIdx);
+        contentValues.put("requirement", amount);
         db.insert(RELATION_TABLE_NAME, null, contentValues);
-        contentValues = new ContentValues();
-        contentValues.put("recipe_id", recipeIdx);
-        contentValues.put("ingredient_id", 2);
-        contentValues.put("requirement", 500);
-
-        db.insert(RELATION_TABLE_NAME, null, contentValues);
-        contentValues = new ContentValues();
-        contentValues.put("recipe_id", recipeIdx);
-        contentValues.put("ingredient_id", 3);
-        contentValues.put("requirement", 500);
-        db.insert(RELATION_TABLE_NAME, null, contentValues);
-
     }
 }
 
