@@ -34,19 +34,14 @@ public class IngredientFragment extends Fragment {
 
         Button sortButton = (Button) rootView.findViewById(R.id.SortButton);
         Button AddButton = (Button) rootView.findViewById(R.id.AddButton);
-        SearchView searchView = rootView.findViewById(R.id.search_view);
+        EditText searchBox = rootView.findViewById(R.id.search_bar);
+        Button searchBtn = rootView.findViewById(R.id.SearchButton);
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                if (query == null) return true;
-                ingredientListAdapter.search(query);
-                return true;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                ingredientListAdapter.search(newText);
-                return true;
+            public void onClick(View v) {
+                if (searchBox.getText() == null) return;
+                ingredientListAdapter.search(searchBox.getText().toString());
             }
         });
 

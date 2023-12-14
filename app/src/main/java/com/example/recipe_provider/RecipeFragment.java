@@ -27,19 +27,14 @@ public class RecipeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_recipe, container, false);
 
-        SearchView searchView = rootView.findViewById(R.id.search_view);
+        EditText searchBox = rootView.findViewById(R.id.search_bar);
+        Button searchBtn = rootView.findViewById(R.id.SearchButton);
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                if (query == null) return true;
-                recipeListAdapter.search(query);
-                return true;
-            }
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                recipeListAdapter.search(newText);
-                return true;
+            public void onClick(View v) {
+                if (searchBox.getText() == null) return;
+                recipeListAdapter.search(searchBox.getText().toString());
             }
         });
 
