@@ -15,12 +15,22 @@ import com.example.recipe_provider.dto.Ingredient;
 public class DatabaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db;
     public static final String DATABASE_NAME = "DATABASE";
+    private static final int DATABASE_VERSION = 1;
     static final String RECIPE_TABLE_NAME = "RECIPE";
     static final String INGREDIENT_TABLE_NAME = "INGREDIENT";
     static final String RELATION_TABLE_NAME = "RELATION";
 
-    public DatabaseHelper(@Nullable final Context context, @Nullable final String name, @Nullable final SQLiteDatabase.CursorFactory factory, final int version) {
-        super(context, name, factory, version);
+    private static DatabaseHelper instance;
+
+    private DatabaseHelper(Context context) {
+        super(context.getApplicationContext(), DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static synchronized DatabaseHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = new DatabaseHelper(context);
+        }
+        return instance;
     }
 
     @Override

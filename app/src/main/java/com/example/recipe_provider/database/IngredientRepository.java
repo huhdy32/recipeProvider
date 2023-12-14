@@ -19,7 +19,7 @@ public class IngredientRepository {
     private SQLiteDatabase db;
 
     public IngredientRepository(final Context context) {
-        this.databaseHelper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, 1);
+        this.databaseHelper = DatabaseHelper.getInstance(context);
     }
 
 

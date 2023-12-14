@@ -30,10 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // 데이터 베이스 생성 코드
-        database = new DatabaseHelper(this, DatabaseHelper.DATABASE_NAME, null, 1);
 
-        //리포지토리 생성 코드
         swapbutton = findViewById(R.id.SwapButton);
 
         recipefragment = new RecipeFragment();

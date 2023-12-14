@@ -21,7 +21,7 @@ public class RecipeRepository {
     private SQLiteDatabase db;
 
     public RecipeRepository(final Context context) {
-        this.databaseHelper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, 1);
+        this.databaseHelper = DatabaseHelper.getInstance(context);
     }
 
     // 리스트형태로 반환되는 데이터를 위함
