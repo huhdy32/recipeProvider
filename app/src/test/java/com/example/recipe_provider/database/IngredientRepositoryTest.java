@@ -26,7 +26,7 @@ public class IngredientRepositoryTest {
     @Test
     public void TEST_GET_ALL_INGREDIENTS() {
         IngredientRepository ingredientRepository = new IngredientRepository(context);
-        assertEquals(ingredientRepository.getAll().size(), 3);
+        assertEquals(ingredientRepository.getAll().size(), 7);
     }
 
 //    @Test
@@ -40,7 +40,7 @@ public class IngredientRepositoryTest {
         assertEquals(ingredientRepository.insert(new Ingredient(
                 "heellowmd",
                 2234,
-                "heelo/1231")),4 );
+                "heelo/1231")),8 );
     }
 
     @Test
