@@ -1,10 +1,10 @@
 package com.example.recipe_provider.dto;
 
 public class RecipeEntity {
-    private long id;
-    private String name;
-    private int remain;
-    private int require;
+    private final long id;
+    private final String name;
+    private final int remain;
+    private final int require;
 
     public RecipeEntity(long id, String name, int remain, int require) {
         this.id = id;

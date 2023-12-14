@@ -24,12 +24,12 @@ public class RecipeListAdapter extends BaseAdapter {
     private List<RecipeEntity> mItems;
 
     //레시피 리스트 불러오기.
-    public RecipeListAdapter(Context context) {
+    public RecipeListAdapter(final Context context) {
         this.repository = new RecipeRepository(context);
         this.mItems = repository.getAll();
     }
 
-    public void sort(boolean sortIndex) {
+    public void sort(final boolean sortIndex) {
         if (sortIndex == false) {
             Collections.sort(mItems, ((o1, o2) -> o1.getName().compareTo(o2.getName())));
         }else {
@@ -38,7 +38,7 @@ public class RecipeListAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
-    public void search(String text) {
+    public void search(final String text) {
         RecipeEntity entity = mItems.stream()
                 .filter(recipeEntity -> recipeEntity.getName().contains(text))
                 .findFirst()
@@ -55,17 +55,17 @@ public class RecipeListAdapter extends BaseAdapter {
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(final int position) {
         return mItems.get(position).getId();
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(final int position) {
         return mItems.get(position);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         final int pos = position;
         final Context context = parent.getContext();
 

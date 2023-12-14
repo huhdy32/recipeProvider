@@ -6,14 +6,14 @@ public class Ingredient {
     private int remain;
     private String imagePath;
 
-    public Ingredient(long id, String name, int remain, String imagePath) {
+    public Ingredient(final long id, final String name, final int remain, final String imagePath) {
         this.id = id;
         this.name = name;
         this.remain = remain;
         this.imagePath = imagePath;
     }
 
-    public Ingredient(String name, int remain, String imagePath) {
+    public Ingredient(final String name, final int remain, final String imagePath) {
         this.name = name;
         this.remain = remain;
         this.imagePath = imagePath;

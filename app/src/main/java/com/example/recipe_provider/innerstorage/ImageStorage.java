@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ImageStorage {
-    public static String saveToInternalStorage(Bitmap bitmapImage, Context context) {
+    public static String saveToInternalStorage(final Bitmap bitmapImage, final Context context) {
         ContextWrapper contextWrapper = new ContextWrapper(context);
 
         File directory = contextWrapper.getDir("imageDir", Context.MODE_PRIVATE);
@@ -42,7 +42,7 @@ public class ImageStorage {
         return directory.getAbsolutePath() + "/" + imagePath;
     }
 
-    public static boolean loadImageFromStorage(String path, ImageView imageView) {
+    public static boolean loadImageFromStorage(final String path, final ImageView imageView) {
         try {
             File imageFile = new File(path);
             Bitmap bitmapImage = BitmapFactory.decodeStream(new FileInputStream(imageFile));

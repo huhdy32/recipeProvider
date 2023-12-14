@@ -18,9 +18,10 @@ public class IngredientRepository {
     private final DatabaseHelper databaseHelper;
     private SQLiteDatabase db;
 
-    public IngredientRepository(Context context) {
+    public IngredientRepository(final Context context) {
         this.databaseHelper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, 1);
     }
+
 
     // 목록 출력을 위한 메소드
     public List<IngredientEntity> getAll() {
@@ -81,7 +82,7 @@ public class IngredientRepository {
     }
 
     // 재료 잔량 변경
-    public int updateRemain(long ingredientId, int newRemain) {
+    public int updateRemain(final long ingredientId, final int newRemain) {
         db = databaseHelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("remain", newRemain);

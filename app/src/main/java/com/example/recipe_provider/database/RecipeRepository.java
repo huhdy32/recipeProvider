@@ -20,7 +20,7 @@ public class RecipeRepository {
     private final DatabaseHelper databaseHelper;
     private SQLiteDatabase db;
 
-    public RecipeRepository(Context context) {
+    public RecipeRepository(final Context context) {
         this.databaseHelper = new DatabaseHelper(context, DatabaseHelper.DATABASE_NAME, null, 1);
     }
 

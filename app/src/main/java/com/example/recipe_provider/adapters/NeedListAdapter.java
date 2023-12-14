@@ -24,7 +24,7 @@ public class NeedListAdapter extends BaseAdapter {
         private List<Map.Entry<Ingredient, Integer>> mEntries;
 
         //해당 레시피의 필요 재료 해시맵을 불러오기
-        public NeedListAdapter(Context context, long idx) {
+        public NeedListAdapter(final Context context, final long idx) {
             this.repository = new RecipeRepository(context);
             this.idx = idx;
             this.mRequireItem = repository.getRequireIngredient(idx);
@@ -32,8 +32,8 @@ public class NeedListAdapter extends BaseAdapter {
         }
 
         //레시피 추가에 사용
-        public NeedListAdapter(Context context,
-                               HashMap<Ingredient, Integer> ingredientIntegerHashMap){
+        public NeedListAdapter(final Context context,
+                               final HashMap<Ingredient, Integer> ingredientIntegerHashMap){
             this.repository = new RecipeRepository(context);
             this.mRequireItem = ingredientIntegerHashMap;
             this.mEntries = new ArrayList<>(mRequireItem.entrySet());
@@ -43,25 +43,25 @@ public class NeedListAdapter extends BaseAdapter {
             return mEntries.size();
         }
         @Override
-        public long getItemId(int position){
+        public long getItemId(final int position){
             return position;
         }
 
         //선택된 아이템 Key 값 추출
         @Override
-        public Ingredient getItem(int position){
+        public Ingredient getItem(final int position){
             Map.Entry<Ingredient, Integer> entry = mEntries.get(position);
             return entry.getKey();
         }
         // hashmap으로 받은 데이터 업데이트
-        public void updateData(HashMap<Ingredient, Integer> newData) {
+        public void updateData(final HashMap<Ingredient, Integer> newData) {
             this.mRequireItem = newData;
             this.mEntries = new ArrayList<>(mRequireItem.entrySet());
             notifyDataSetChanged();
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, final ViewGroup parent) {
             final int pos = position;
             final Context context = parent.getContext();
 

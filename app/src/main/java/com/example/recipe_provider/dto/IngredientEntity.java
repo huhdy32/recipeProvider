@@ -1,11 +1,11 @@
 package com.example.recipe_provider.dto;
 
 public class IngredientEntity {
-    private long id;
-    private String name;
-    private int remain;
+    private final long id;
+    private final String name;
+    private final int remain;
 
-    public IngredientEntity(long id, String name, int remain) {
+    public IngredientEntity(final long id, final String name, final int remain) {
         this.id = id;
         this.name = name;
         this.remain = remain;

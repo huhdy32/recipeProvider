@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.recipe_provider.dto.Ingredient;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db;
     public static final String DATABASE_NAME = "DATABASE";
@@ -17,12 +19,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static final String INGREDIENT_TABLE_NAME = "INGREDIENT";
     static final String RELATION_TABLE_NAME = "RELATION";
 
-    public DatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public DatabaseHelper(@Nullable final Context context, @Nullable final String name, @Nullable final SQLiteDatabase.CursorFactory factory, final int version) {
         super(context, name, factory, version);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(final SQLiteDatabase sqLiteDatabase) {
         db = sqLiteDatabase;
         init_Tables();
         initIngredientTable();
