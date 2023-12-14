@@ -15,6 +15,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ImageStorage {
+
+    public static Bitmap getBitmapFromDrawable(Context context, int drawableId) {
+        return BitmapFactory.decodeResource(context.getResources(), drawableId);
+    }
+
     public static String saveToInternalStorage(final Bitmap bitmapImage, final Context context) {
         ContextWrapper contextWrapper = new ContextWrapper(context);
 
