@@ -77,12 +77,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertIngredient("밥", 1000, R.drawable.rice);
         insertIngredient("간장", 900, R.drawable.suisause);
         insertIngredient("계란", 800, R.drawable.egg);
+        insertIngredient("물", 100000, R.drawable.water);
+        insertIngredient("신라면 봉지", 1, R.drawable.sinramyeon);
+
+        insertIngredient("파", 300, R.drawable.pa);
+        insertIngredient("마늘", 300, R.drawable.maneul);
     }
 
     private void initRelationTable() {
         insertRelation(1, 1, 500);
         insertRelation(1, 2, 500);
         insertRelation(1, 3, 500);
+
+        insertRelation(2, 4, 500);
+        insertRelation(2, 5, 1);
+
     }
 
     private void insertRecipe(String name, String details, int resourceId, String category) {

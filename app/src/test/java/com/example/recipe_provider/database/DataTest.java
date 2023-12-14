@@ -23,12 +23,12 @@ public class DataTest {
     @Test
     public void TEST_RECIPE_TABLE() {
         recipeRepository = new RecipeRepository(context);
-        assertEquals(this.recipeRepository.getAll().size(), 1);
+        assertEquals(this.recipeRepository.getAll().size(), 2);
     }
     @Test
     public void TEST_INGREDIENT_TABLE() {
         ingredientRepository = new IngredientRepository(context);
-        assertEquals(this.ingredientRepository.getAll().size(), 3);
+        assertEquals(this.ingredientRepository.getAll().size(), 5);
     }
     @Test
     public void TEST_GET_INGREDIENT() {
