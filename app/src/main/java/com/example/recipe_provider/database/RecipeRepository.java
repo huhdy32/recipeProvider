@@ -100,7 +100,6 @@ public class RecipeRepository {
             }
         }
         db.close();
-        ;
     }
 
     public int delete(final long recipeId) {
@@ -115,6 +114,12 @@ public class RecipeRepository {
     public boolean create(final Recipe recipe) {
         db = databaseHelper.getWritableDatabase();
         Map<Ingredient, Integer> map = recipe.getIngredientRequirements();
+        for (Ingredient ingredient : map.keySet()) {
+            if (ingredient.getRemain() - map.get(ingredient) < 0) {
+                db.close();
+                return false;
+            }
+        }
         for (Ingredient ingredient : map.keySet()) {
             ContentValues contentValues = new ContentValues();
             int value = ingredient.getRemain() - map.get(ingredient);
