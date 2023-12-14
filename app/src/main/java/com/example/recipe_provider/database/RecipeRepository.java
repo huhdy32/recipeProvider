@@ -36,12 +36,7 @@ public class RecipeRepository {
                     recipes.add(new RecipeEntity(
                             cursor.getInt(0),
                             cursor.getString(1),
-                            getRequireIngredient(cursor.getInt(0)).keySet().stream()
-                                    .mapToInt(Ingredient::getRemain)
-                                    .sum(),
-                            getRequireIngredient(cursor.getInt(0)).values().stream()
-                                    .mapToInt(o -> o)
-                                    .sum()
+                            getRequireIngredient(cursor.getInt(0))
                     ));
                 } while (cursor.moveToNext());
                 cursor.close();
