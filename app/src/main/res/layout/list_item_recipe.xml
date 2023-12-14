@@ -23,8 +23,9 @@
         android:id="@+id/numItemNeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textColor="#0000ff"
+        android:layout_marginEnd="200dp"
         android:layout_marginRight="5dp"
+        android:layout_toStartOf="@+id/numItem"
+        android:textColor="#E91E63"
         android:textSize="15dp" />
 </RelativeLayout>
