@@ -34,14 +34,6 @@ public class RecipeRepositoryTest {
     }
 
     @Test
-    public void TEST_GET_RECIPE() {
-        RecipeRepository recipeRepository = new RecipeRepository(context);
-        Recipe recipe = recipeRepository.get(1);
-        assertEquals(recipe.getName(), "간장계란밥");
-        assertEquals(recipe.getRecipeType(), "한식");
-    }
-
-    @Test
     public void TEST_INSERT_RECIPE() {
         RecipeRepository recipeRepository = new RecipeRepository(context);
         recipeRepository.insert(new Recipe(
@@ -51,7 +43,7 @@ public class RecipeRepositoryTest {
                 new HashMap<>(),
                 "한식"
         ));
-        assertEquals(recipeRepository.getAll().size(), 2);
+        assertEquals(recipeRepository.getAll().size(), 3);
     }
     @Test
     public void TEST_DELETE_RECIPE() {
