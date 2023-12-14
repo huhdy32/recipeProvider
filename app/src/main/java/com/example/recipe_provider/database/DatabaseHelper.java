@@ -52,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + INGREDIENT_TABLE_NAME + "(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "name TEXT UNIQUE," +
-                "imagePath TEXT UNIQUE, " +
+                "imagePath TEXT, " +
                 "remain INTEGER);");
         db.execSQL("CREATE TABLE IF NOT EXISTS " + RELATION_TABLE_NAME + "(" +
                 "recipe_id INTEGER," +
