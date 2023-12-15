@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.recipe_provider.R;
+import com.example.recipe_provider.adapters.CompareListAdapter;
 import com.example.recipe_provider.adapters.NeedListAdapter;
 import com.example.recipe_provider.adapters.RecipeListAdapter;
 import com.example.recipe_provider.database.IngredientRepository;
@@ -64,7 +65,7 @@ public class DetailRecipePopupActivity extends Activity {
 
         // 오류 검출 : itemId 검증
         Log.i("itemId", String.valueOf(itemId));
-        NeedListAdapter adapter = new NeedListAdapter(this, itemId);
+        CompareListAdapter adapter = new CompareListAdapter(this, itemId);
 
         needList.setAdapter(adapter);
 

@@ -21,7 +21,7 @@
             android:layout_weight="5"
             android:layout_gravity="center_vertical"
             android:background="@drawable/greenrectangle_border"
-            android:hint="레시피 이름 입력" />
+            android:hint="재료 이름 입력" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/SearchButton"

@@ -12,13 +12,13 @@ import com.example.recipe_provider.dto.Ingredient;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RecipeAdapter extends NeedListAdapter{
+public class CompareListAdapter extends NeedListAdapter{
 
-    public RecipeAdapter(Context context, long idx) {
+    public CompareListAdapter(Context context, long idx) {
         super(context, idx);
     }
 
-    public RecipeAdapter(Context context, HashMap<Ingredient, Integer> ingredientIntegerHashMap) {
+    public CompareListAdapter(Context context, HashMap<Ingredient, Integer> ingredientIntegerHashMap) {
         super(context, ingredientIntegerHashMap);
     }
 
@@ -34,7 +34,7 @@ public class RecipeAdapter extends NeedListAdapter{
 
         TextView nameItem = (TextView) convertView.findViewById(R.id.nameItem);
         TextView numItem = (TextView) convertView.findViewById(R.id.numItem);
-        TextView numItemNeed = convertView.findViewById(R.id.numItemNeed);
+        TextView numItemNeed = (TextView) convertView.findViewById(R.id.numItemNeed);
 
         Map.Entry<Ingredient, Integer> entry = mEntries.get(pos);
         Ingredient requireItem = entry.getKey();
@@ -42,7 +42,7 @@ public class RecipeAdapter extends NeedListAdapter{
 
         nameItem.setText(requireItem.getName());
         numItem.setText(requireAmount.toString());
-        numItemNeed.setText(mRequireItem.get(requireItem));
+        numItemNeed.setText(String.valueOf(requireItem.getRemain()));
 
         return convertView;
     }
