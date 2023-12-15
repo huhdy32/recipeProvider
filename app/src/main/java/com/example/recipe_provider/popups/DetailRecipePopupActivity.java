@@ -14,10 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.recipe_provider.R;
-import com.example.recipe_provider.adapters.NeedListAdapter;
-import com.example.recipe_provider.adapters.RecipeAdapter;
-import com.example.recipe_provider.adapters.RecipeListAdapter;
-import com.example.recipe_provider.database.IngredientRepository;
+import com.example.recipe_provider.adapters.CompareListAdapter;
+
 import com.example.recipe_provider.database.RecipeRepository;
 import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.dto.Recipe;
@@ -27,8 +25,9 @@ public class DetailRecipePopupActivity extends Activity {
     Button deleteButton;
     Button makeButton;
     Button closeButton;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 타이틀 바 제거
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -38,9 +37,9 @@ public class DetailRecipePopupActivity extends Activity {
         long itemId = -1;
 
         //컨텍스트 전달 예외 처리
-        if(getIntent().hasExtra("ID")) {
+        if (getIntent().hasExtra("ID")) {
             itemId = getIntent().getLongExtra("ID", -1);
-        }else{
+        } else {
             Toast.makeText(this, "ID 값 없음!", Toast.LENGTH_SHORT).show();
             finish();
         }
@@ -65,8 +64,7 @@ public class DetailRecipePopupActivity extends Activity {
 
         // 오류 검출 : itemId 검증
         Log.i("itemId", String.valueOf(itemId));
-        NeedListAdapter adapter = new NeedListAdapter(this, itemId);
-//        RecipeAdapter adapter = new RecipeAdapter(this, itemId);
+        CompareListAdapter adapter = new CompareListAdapter(this, itemId);
 
         needList.setAdapter(adapter);
 
@@ -94,17 +92,16 @@ public class DetailRecipePopupActivity extends Activity {
 
         //만들기 버튼 리스너
         makeButton = (Button) findViewById(R.id.makeBtn);
-        makeButton.setOnClickListener(new View.OnClickListener(){
+        makeButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 String msg;
 
                 // 이거 동작 안함, 수정요망
-                if(repository.create(Item)) {
+                if (repository.create(Item)) {
                     msg = "재료 제거됨!";
                     adapter.notifyDataSetChanged();
-                }
-                else
+                } else
                     msg = "재료가 부족합니다.";
                 Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
             }
@@ -113,8 +110,8 @@ public class DetailRecipePopupActivity extends Activity {
 
     // 바깥 레이어 클릭 시 닫힘 막기
     @Override
-    public boolean onTouchEvent(MotionEvent event){
-        if(event.getAction()==MotionEvent.ACTION_OUTSIDE){
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
             return false;
         }
         return true;
