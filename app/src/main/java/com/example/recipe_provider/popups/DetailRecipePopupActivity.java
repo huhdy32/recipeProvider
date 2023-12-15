@@ -101,6 +101,7 @@ public class DetailRecipePopupActivity extends Activity {
                 if (repository.create(Item)) {
                     msg = "재료 제거됨!";
                     adapter.notifyDataSetChanged();
+                    finish();
                 } else
                     msg = "재료가 부족합니다.";
                 Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
