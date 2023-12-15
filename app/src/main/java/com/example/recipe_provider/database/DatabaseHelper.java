@@ -1,7 +1,5 @@
 package com.example.recipe_provider.database;
 
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

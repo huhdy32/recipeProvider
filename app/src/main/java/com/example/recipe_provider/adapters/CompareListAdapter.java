@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.example.recipe_provider.R;
 import com.example.recipe_provider.dto.Ingredient;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class CompareListAdapter extends NeedListAdapter{

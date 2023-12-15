@@ -9,9 +9,7 @@ import android.widget.TextView;
 
 import com.example.recipe_provider.R;
 import com.example.recipe_provider.database.IngredientRepository;
-import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.dto.IngredientEntity;
-import com.example.recipe_provider.dto.RecipeEntity;
 
 import java.util.Collections;
 import java.util.List;

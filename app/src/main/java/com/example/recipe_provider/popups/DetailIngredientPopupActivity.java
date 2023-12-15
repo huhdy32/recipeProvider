@@ -1,8 +1,5 @@
 package com.example.recipe_provider.popups;
 
-import static android.app.ProgressDialog.show;
-import static java.security.AccessController.getContext;
-
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -12,17 +9,12 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.recipe_provider.MainActivity;
 import com.example.recipe_provider.R;
-import com.example.recipe_provider.adapters.RecipeListAdapter;
 import com.example.recipe_provider.database.IngredientRepository;
 import com.example.recipe_provider.dto.Ingredient;
-import com.example.recipe_provider.innerstorage.ImageStorage;
-import com.google.android.material.textfield.TextInputEditText;
 
 public class DetailIngredientPopupActivity extends Activity {
     Button deleteButton;

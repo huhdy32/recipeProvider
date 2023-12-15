@@ -9,15 +9,12 @@ import android.widget.TextView;
 
 import com.example.recipe_provider.R;
 import com.example.recipe_provider.database.RecipeRepository;
-import com.example.recipe_provider.dto.Ingredient;
-import com.example.recipe_provider.dto.Recipe;
 import com.example.recipe_provider.dto.RecipeEntity;
 
-import java.util.ArrayList;
+
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class RecipeListAdapter extends BaseAdapter {
     private final RecipeRepository repository;

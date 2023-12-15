@@ -15,11 +15,8 @@ import android.widget.Toast;
 
 import com.example.recipe_provider.R;
 import com.example.recipe_provider.adapters.CompareListAdapter;
-
 import com.example.recipe_provider.database.RecipeRepository;
-import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.dto.Recipe;
-import com.example.recipe_provider.innerstorage.ImageStorage;
 
 public class DetailRecipePopupActivity extends Activity {
     Button deleteButton;

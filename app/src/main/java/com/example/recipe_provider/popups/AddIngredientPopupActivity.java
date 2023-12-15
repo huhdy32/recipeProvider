@@ -10,14 +10,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.recipe_provider.R;
 import com.example.recipe_provider.database.IngredientRepository;
-import com.example.recipe_provider.database.RecipeRepository;
 import com.example.recipe_provider.dto.Ingredient;
 import com.example.recipe_provider.innerstorage.ImageStorage;
 import com.google.android.material.textfield.TextInputEditText;
