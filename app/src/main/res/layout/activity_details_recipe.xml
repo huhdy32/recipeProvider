@@ -25,8 +25,8 @@
         android:id="@+id/itemImage"
         android:layout_width="144dp"
         android:layout_height="153dp"
-        android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/rectangle_border"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemName" />
@@ -73,18 +73,55 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/index"
+        android:layout_width="165dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/greenrectangle_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/itemImage"
+        app:layout_constraintTop_toBottomOf="@+id/itemName">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="이름"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/numItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:text="필요"
+            android:textColor="#0000ff"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_toStartOf="@+id/numItem"
+            android:text="보유"
+            android:textColor="#E91E63"
+            android:textSize="15dp" />
+    </RelativeLayout>
+
     <ListView
         android:id="@+id/needList"
-        android:layout_width="159dp"
-        android:layout_height="151dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="15dp"
+        android:layout_width="165dp"
+        android:layout_height="125dp"
         android:background="@drawable/rectangle_border"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/itemImage"
-        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+        app:layout_constraintTop_toBottomOf="@+id/index" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/closeBtn"
