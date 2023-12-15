@@ -12,14 +12,10 @@ import com.example.recipe_provider.dto.Ingredient;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RecipeAdapter extends NeedListAdapter{
+public class RecipeAdapter extends NeedListAdapter {
 
     public RecipeAdapter(Context context, long idx) {
         super(context, idx);
-    }
-
-    public RecipeAdapter(Context context, HashMap<Ingredient, Integer> ingredientIntegerHashMap) {
-        super(context, ingredientIntegerHashMap);
     }
 
     @Override
@@ -27,7 +23,7 @@ public class RecipeAdapter extends NeedListAdapter{
         final int pos = position;
         final Context context = parent.getContext();
 
-        if(convertView == null){
+        if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_item_recipe, parent, false);
         }
