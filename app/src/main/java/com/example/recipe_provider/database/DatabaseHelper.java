@@ -67,19 +67,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void initRecipeTable() {
-        insertRecipe("간장계란밥", "마구마구 넣고 마구마구 비벼 먹기", R.drawable.eggbob, "한식");
-        insertRecipe("신라면", "물! 물부터 넣기!!", R.drawable.recipe_ramyeon, "한식");
+        insertRecipe("간장계란밥", "1. 계란을 후라이팬에 넣고 튀기듯이 익힌다.\n" +
+                "2. 계란후라이가 완성되면 모든 재료를 한번에 넣고 비비면 완성.", R.drawable.eggbob, "한식");
+        insertRecipe("신라면",
+                "1. 냄비에 물을 넣는다.\n" +
+                "2. 물이 끓을 때 까지 가열한 후 스프와 면을 넣는다.\n" +
+                        "3. 3분간 더 끓인 뒤 완성.", R.drawable.recipe_ramyeon, "한식");
+        insertRecipe("탕후루",
+                "1. 설탕:물 5:1 비율 혼합물을 종이컵 안에 만든다.\n" +
+                        "2. 종이컵을 전자레인지에 1분간 돌린다.\n" +
+                        "3. 샤인머스켓을 젓가락에 꼽아 혼합물로 코팅한다.", R.drawable.tanghuru, "중식");
     }
 
     private void initIngredientTable() {
         insertIngredient("밥", 1000, R.drawable.rice);
         insertIngredient("간장", 900, R.drawable.suisause);
         insertIngredient("계란", 800, R.drawable.egg);
+
         insertIngredient("물", 100000, R.drawable.water);
         insertIngredient("신라면 봉지", 1, R.drawable.sinramyeon);
 
         insertIngredient("파", 300, R.drawable.pa);
         insertIngredient("마늘", 300, R.drawable.maneul);
+        insertIngredient("설탕", 500, R.drawable.sugar);
+        insertIngredient("샤인머스켓", 0, R.drawable.muscat);
+        insertIngredient("김치", 500, R.drawable.kimchi);
     }
 
     private void initRelationTable() {
@@ -90,6 +102,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertRelation(2, 4, 500);
         insertRelation(2, 5, 1);
 
+        insertRelation(3, 8, 200);
+        insertRelation(3, 9, 500);
     }
 
     private void insertRecipe(String name, String details, int resourceId, String category) {
