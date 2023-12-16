@@ -77,6 +77,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "1. 설탕:물 5:1 비율 혼합물을 종이컵 안에 만든다.\n" +
                         "2. 종이컵을 전자레인지에 1분간 돌린다.\n" +
                         "3. 샤인머스켓을 젓가락에 꼽아 혼합물로 코팅한다.", R.drawable.tanghuru, "중식");
+        insertRecipe("치즈버거",
+                "1. 빵을 올린다.\n" +
+                        "2. 체다치즈를 올린다. \n" +
+                        "3. 패티를 올린다. \n" +
+                        "4. 빵을 올린다.",
+                R.drawable.cheeseburger,
+                "양식");
     }
 
     private void initIngredientTable() {
@@ -92,6 +99,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertIngredient("설탕", 500, R.drawable.sugar);
         insertIngredient("샤인머스켓", 0, R.drawable.muscat);
         insertIngredient("김치", 500, R.drawable.kimchi);
+
+        insertIngredient("치즈", 500, R.drawable.cheese);
+        insertIngredient("빵", 100, R.drawable.bbang);
+        insertIngredient("패티", 200, R.drawable.patty);
+
     }
 
     private void initRelationTable() {
@@ -104,6 +116,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         insertRelation(3, 8, 200);
         insertRelation(3, 9, 500);
+
+        insertRelation(4, 10, 2);
+        insertRelation(4, 11, 2);
+        insertRelation(4, 12, 1);
     }
 
     private void insertRecipe(String name, String details, int resourceId, String category) {
